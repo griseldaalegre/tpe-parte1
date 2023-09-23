@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `libros` (
-  `id_libro` int(11) NOT NULL,
-  `titulo_libro` varchar(45) NOT NULL,
-  `autor_libro` varchar(45) NOT NULL,
-  `categoria` varchar(45) NOT NULL,
-  `fecha_creacion` date NOT NULL
+  `id_libro` int(11),
+  `titulo_libro` varchar(45),
+  `autor_libro` varchar(45),
+  `categoria` varchar(45),
+  `fecha_creacion` date
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
