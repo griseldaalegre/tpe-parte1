@@ -1,6 +1,6 @@
 <?php
 //cambiar nombre de archivo?
-class TaskView {
+class HomeView {
     public function showHome() {
         require 'templates/header.php';
         require 'templates/footer.php';

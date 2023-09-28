@@ -1,5 +1,5 @@
 <?php
-require_once 'apps/controllers/task.controller.php';
+require_once 'apps/controllers/home.controller.php';
 require_once 'apps/controllers/categoria.controller.php';
 
 
@@ -20,14 +20,16 @@ $params = explode('/', $action);
 
 switch ($params[0]) {
     case 'home':
-        $controller = new TaskController();
+        $controller = new HomeController();
         $controller->showHome();
         break;
-    case 'categoria':
+    case 'categoria': //cambiar nombre a categorias
         $controller = new CategoriaController();
         $controller->showCategoria();
         break;
-        
+    case 'adventure'://cambiar nombre a categoria
+        $controller = new AdventureController();
+        $controller->showAdventure();    
     default: 
         echo "404 Page Not Found";
         break;
