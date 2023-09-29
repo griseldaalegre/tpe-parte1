@@ -2,31 +2,39 @@
 require_once './apps/models/categoria.model.php';
 require_once './apps/views/categoria.view.php';
 
-class CategoriaController {
+class CategoriasController {
     //privates
     private $model;
     private $view;
 
     public function __construct() {
         //$this->model = new CategoriaModel();
-        $this->model = new CategoriaModel();
-        $this->view = new CategoriaView();
+        $this->model = new CategoriasModel();
+        $this->view = new CategoriasView();
         
     }
-    public function showCategoria() {
-        $categorias = $this->model->getCategoria();
-        // muestro la tabla 
-        $this->view->showCategoria($categorias);
+    public function showCategorias() {
+        $categorias = $this->model->getCategorias();
+        $this->view->showCategorias($categorias);
         
     }
 }
-class AdventureController {
+class CategoriaController {
     //privates
     private $model;
     private $view;
     
-    public function showAdventure() {
-        $this->model = new AdventureModel();
-       // $this->view = new AdventureView();
+    public function __construct() {
+        //$categoria = getCategoriaById($id);
+        $this->model = new CategoriaModel();
+        $this->view = new CategoriaView();
+       // $this->view = new CategoriaView();
+    }
+
+    public function showCategoriaById($categoria) {
+        $categoria = $this->model->getCategoria($categoria);
+        // muestro la tabla 
+        $this->view->showCategoriaById($categoria);
+        
     }
 }

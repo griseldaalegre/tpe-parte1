@@ -30,7 +30,7 @@
             Libros
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="categoria">Categorias</a></li>
+            <li><a class="dropdown-item" href="categorias">Categorias</a></li>
           </ul>
         </li>
         <li class="nav-item">

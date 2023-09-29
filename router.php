@@ -11,25 +11,26 @@ if (!empty( $_GET['action'])) {
 }
 
 // Home    ->    showHome();
-// Categoria   ->    showCategoria();
-// eliminar/:ID  -> removeTask($id); 
-// finalizar/:ID  -> finishTask($id);
+// Categorias   ->    showCategoria();
+// Categoria  -> showCategoria(); 
+// 
 
 // parsea la accion para separar accion real de parametros
 $params = explode('/', $action);
 
 switch ($params[0]) {
-    case 'home':
+    case 'home': //Muestra el Home
         $controller = new HomeController();
         $controller->showHome();
         break;
-    case 'categoria': //cambiar nombre a categorias
-        $controller = new CategoriaController();
-        $controller->showCategoria();
+    case 'categorias': //Muestra lista de categorias
+        $controller = new CategoriasController();
+        $controller->showCategorias();
         break;
-    case 'adventure'://cambiar nombre a categoria
-        $controller = new AdventureController();
-        $controller->showAdventure();    
+    case 'categoria'://Muestra lista de libros
+        $controller = new CategoriaController();
+        $controller->showCategoriaById($params[1]);
+        break;    
     default: 
         echo "404 Page Not Found";
         break;

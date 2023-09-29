@@ -1,7 +1,7 @@
 <?php
-class CategoriaModel {
+class CategoriasModel {
 
-    function getCategoria() {
+    function getCategorias() {
         require_once './database/conection_db.php';
 
         $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
@@ -17,20 +17,22 @@ class CategoriaModel {
     }
 }
 
-class AdventureModel {
-    function getAdventure(){
+class CategoriaModel {
+    function getCategoria($categoria){
         require_once './database/conection_db.php';
 
         $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
         $db = $conexionDb->getDb(); // Obtener la conexión
 
+        //$id = $categoria->id_categoria;
+
         $query = $db->prepare('SELECT * FROM libros WHERE id_categoria = 1');
         $query->execute();
 
         // $categorias es un arreglo de categorias
-        $categorias = $query->fetchAll(PDO::FETCH_OBJ);
+        $categoria = $query->fetchAll(PDO::FETCH_OBJ);
 
-        return $categorias;
+        return $categoria;
     }
 }
     
