@@ -18,7 +18,7 @@ class CategoriasModel {
 }
 
 class CategoriaModel {
-    function getCategoria($categoria){
+    function getCategoria($href){
         require_once './database/conection_db.php';
 
         $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
@@ -26,8 +26,8 @@ class CategoriaModel {
 
         //$id = $categoria->id_categoria;
 
-        $query = $db->prepare('SELECT * FROM libros WHERE id_categoria = 1');
-        $query->execute();
+        $query = $db->prepare('SELECT * FROM libros WHERE id_categoria = ?');
+        $query->execute([$href]);
 
         // $categorias es un arreglo de categorias
         $categoria = $query->fetchAll(PDO::FETCH_OBJ);

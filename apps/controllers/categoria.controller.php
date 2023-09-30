@@ -15,8 +15,10 @@ class CategoriasController {
     }
     public function showCategorias() {
         $categorias = $this->model->getCategorias();
-        $this->view->showCategorias($categorias);
-        
+        $href = $this->view->showCategorias($categorias);
+
+        $categoriaModel = new CategoriaModel();
+        $resultado = $categoriaModel->getCategoria($href);
     }
 }
 class CategoriaController {

@@ -3,10 +3,13 @@ class CategoriasView {
     public function showCategorias($categorias) {
         require_once './templates/header.php';
         
+        $href = '';
+
         ?>
             <ul class="list-group">
                 <?php foreach($categorias as $categoria) { 
-                    $href = $categoria->id_categoria;?>
+                    $href = $categoria->id_categoria;
+                ?>
                     <li class="list-group-item item-task">
                         <div>
                             <a href="categoria/<?php echo $href ?>"><?php echo $categoria->categoria ?></a>
