@@ -1,7 +1,7 @@
 <?php
 require_once 'apps/controllers/home.controller.php';
 require_once 'apps/controllers/categoria.controller.php';
-
+require_once 'apps/controllers/LoginController.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -19,18 +19,26 @@ if (!empty( $_GET['action'])) {
 $params = explode('/', $action);
 
 switch ($params[0]) {
+
     case 'home': //Muestra el Home
         $controller = new HomeController();
         $controller->showHome();
         break;
+
     case 'categorias': //Muestra lista de categorias
         $controller = new CategoriasController();
         $controller->showCategorias();
         break;
+
     case 'categoria'://Muestra lista de libros
         $controller = new CategoriaController();
         $controller->showCategoriaById($params[1]);
-        break;    
+        break;
+
+    case 'login':
+        $controller = new LoginController();
+        $controller->showLogin();
+        break; 
     default: 
         echo "404 Page Not Found";
         break;

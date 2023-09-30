@@ -8,7 +8,7 @@ class CategoriasController {
     private $view;
 
     public function __construct() {
-        //$this->model = new CategoriaModel();
+        //$this->model = new CategoriaModel()
         $this->model = new CategoriasModel();
         $this->view = new CategoriasView();
         
@@ -17,8 +17,6 @@ class CategoriasController {
         $categorias = $this->model->getCategorias();
         $href = $this->view->showCategorias($categorias);
 
-        $categoriaModel = new CategoriaModel();
-        $resultado = $categoriaModel->getCategoria($href);
     }
 }
 class CategoriaController {

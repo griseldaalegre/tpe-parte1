@@ -27,14 +27,36 @@ class CategoriaView {
     
     public function showCategoriaById($categoria) {
     require_once './templates/header.php';
-
-        var_dump($categoria);
-
-        echo 'holis';
-
-    require_once './templates/footer.php';
-}
-
-}
     
+    
+        ?>
+        
+                <body>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Año</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($categoria as $categoria) { ?>
+                            <tr>
+                                <td><?php echo $categoria->titulo_libro ?></td>
+                                <td><?php echo $categoria->autor_libro ?></td>
+                                <td><?php echo $categoria->anio ?></td>
+                            </tr>
+                            <?php } ?>
+
+                        </tbody>
+                    </table>
+                </body>
+    <?php
+    
+    require_once './templates/footer.php';
+
+    }
+    
+}
 ?>
