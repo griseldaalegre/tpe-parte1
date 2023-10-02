@@ -1,6 +1,6 @@
 <?php
 
-require_once './apps/views/home.view.php';
+require_once './apps/views/HomeView.php';
 
 class HomeController {
     //private $model;

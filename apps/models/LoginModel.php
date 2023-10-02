@@ -3,7 +3,7 @@ class LoginModel {
 
     function getLogin(){
 
-        require_once './database/conection_db.php';
+        require_once './database/Conection_db.php';
 
         $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
         $db = $conexionDb->getDb(); // Obtener la conexión

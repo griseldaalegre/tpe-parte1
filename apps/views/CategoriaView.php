@@ -1,7 +1,7 @@
 <?php
 class CategoriasView {
     public function showCategorias($categorias) {
-        require_once './templates/header.php';
+        require_once './templates/Header.php';
         
         $href = '';
 
@@ -18,7 +18,7 @@ class CategoriasView {
                     <?php } ?>
                 </ul>
                 <?php
-            require_once './templates/footer.php';
+            require_once './templates/Footer.php';
             return $href;
     }
 }
@@ -26,7 +26,7 @@ class CategoriasView {
 class CategoriaView {
     
     public function showCategoriaById($categoria) {
-    require_once './templates/header.php';
+    require_once './templates/Header.php';
     
     
         ?>
@@ -54,7 +54,7 @@ class CategoriaView {
                 </body>
     <?php
     
-    require_once './templates/footer.php';
+    require_once './templates/Footer.php';
 
     }
     

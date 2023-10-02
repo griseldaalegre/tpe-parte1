@@ -2,8 +2,8 @@
 //cambiar nombre de archivo?
 class HomeView {
     public function showHome() {
-        require 'templates/header.php';
-        require 'templates/footer.php';
+        require 'templates/Header.php';
+        require 'templates/Footer.php';
         }
     }
  ?>

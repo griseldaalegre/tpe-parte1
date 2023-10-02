@@ -1,6 +1,6 @@
 <?php
-require_once 'apps/controllers/home.controller.php';
-require_once 'apps/controllers/categoria.controller.php';
+require_once 'apps/controllers/HomeController.php';
+require_once 'apps/controllers/CategoriasController.php';
 require_once 'apps/controllers/LoginController.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');

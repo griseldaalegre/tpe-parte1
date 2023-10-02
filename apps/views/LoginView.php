@@ -1,7 +1,7 @@
 <?php
 class LoginView {
     public function showLogin() {
-        require_once './templates/header.php';
+        require_once './templates/Header.php';
         ?>
         
         <form>
@@ -35,7 +35,7 @@ class LoginView {
         
         <?php
        
-        require_once './templates/footer.php';
+        require_once './templates/Footer.php';
           
     }
 }

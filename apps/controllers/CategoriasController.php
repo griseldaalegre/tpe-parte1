@@ -1,6 +1,6 @@
 <?php
-require_once './apps/models/categoria.model.php';
-require_once './apps/views/categoria.view.php';
+require_once './apps/models/CategoriaModel.php';
+require_once './apps/views/CategoriaView.php';
 
 class CategoriasController {
     //privates
