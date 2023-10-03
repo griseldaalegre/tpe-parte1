@@ -1,42 +1,45 @@
 <?php
 class LoginView {
-    public function showLogin() {
-        require_once './templates/Header.php';
-        ?>
+   
+  public function showLogin() {
         
-        <form>
-  <div class="form-row align-items-center">
-    <div class="col-auto">
-      <label class="sr-only" for="inlineFormInput">Name</label>
-      <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Jane Doe">
-    </div>
-    <div class="col-auto">
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">@</div>
-        </div>
-        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
-      </div>
-    </div>
-    <div class="col-auto">
-      <div class="form-check mb-2">
-        <input class="form-check-input" type="checkbox" id="autoSizingCheck">
-        <label class="form-check-label" for="autoSizingCheck">
-          Remember me
-        </label>
-      </div>
-    </div>
-    <div class="col-auto">
-      <button type="submit" class="btn btn-primary mb-2">Submit</button>
-    </div>
-  </div>
-</form>
-        
-        <?php
+      require_once './templates/Header.php';
        
-        require_once './templates/Footer.php';
-          
+       ?>
+          <div class="login">         
+            <form>
+
+              <div>
+                <label>Email address</label>
+                <input type="email" placeholder="email@example.com">
+              </div>
+
+              <div>
+                <label>Password</label>
+                <input type="password" placeholder="Password">
+              </div>
+
+              <div>
+                <div class="uno">
+                  <input type="checkbox">
+                  <label> Remember me </label>
+                </div>
+
+            </form>
+              
+              <div class="dos">
+                <button type="submit">Sign in</button>
+                <a href="#">Sign up</a>
+                <a href="#">Forgot password?</a>
+              </div>
+              
+            </div>
+             
+              
+       <?php
+       
+       require_once './templates/Footer.php';
+     
     }
 }
 ?>
