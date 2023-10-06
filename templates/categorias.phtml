@@ -1,0 +1,18 @@
+<?php require_once './templates/Header.phtml';
+        
+        $href = '';
+
+        ?>
+            <ul class="list-group">
+                <?php foreach($categorias as $categoria) { 
+                    $href = $categoria->id_categoria;
+                ?>
+                    <li class="list-group-item item-task">
+                        <div>
+                            <a href="categoria/<?php echo $href ?>"><?php echo $categoria->categoria ?></a>
+                        </div>
+                    </li>
+                    <?php } ?>
+                </ul>
+                <?php
+            require_once './templates/Footer.phtml'; ?>

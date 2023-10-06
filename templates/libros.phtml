@@ -1,0 +1,35 @@
+<?php require_once './templates/Header.phtml'; ?>
+        
+    <body>
+        
+        <table class="table table-striped">
+            
+            <thead>
+                
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Año</th>
+                </tr>
+            
+            </thead>
+            
+            <tbody>
+            
+                <?php foreach($categoria as $categoria) { ?>
+                
+                <tr>
+                    <td><?php echo $categoria->titulo_libro ?></td>
+                    <td><?php echo $categoria->autor_libro ?></td>
+                    <td><?php echo $categoria->anio ?></td>
+                </tr>
+                
+                <?php } ?>
+            
+            </tbody>
+        
+        </table>
+    
+    </body>
+    
+<?php require_once './templates/Footer.phtml'; ?>
