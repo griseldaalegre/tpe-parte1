@@ -3,10 +3,10 @@ require_once 'apps/controllers/HomeController.php';
 require_once 'apps/controllers/CategoriasController.php';
 require_once 'apps/controllers/LoginController.php';
 
-define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
 $action = 'home'; // accion por defecto
-if (!empty( $_GET['action'])) {
+if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
 
@@ -30,7 +30,7 @@ switch ($params[0]) {
         $controller->showCategorias();
         break;
 
-    case 'categoria'://Muestra lista de libros
+    case 'categoria': //Muestra lista de libros
         $controller = new CategoriaController();
         $controller->showCategoriaById($params[1]);
         break;
@@ -38,8 +38,16 @@ switch ($params[0]) {
     case 'login':
         $controller = new LoginController();
         $controller->showLogin();
-        break; 
-    default: 
+        break;
+    case 'eliminarCategoria':
+        $controller = new CategoriasController();
+        $controller->removeCategoria($params[1]);
+        break;
+    case 'agregarCategoria':
+        $controller = new CategoriasController();
+        $controller->addCategoria();
+        break;
+    default:
         echo "404 Page Not Found";
         break;
 }

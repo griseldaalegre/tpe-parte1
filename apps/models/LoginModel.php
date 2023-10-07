@@ -1,7 +1,9 @@
 <?php
-class LoginModel {
+class LoginModel
+{
 
-    function getLogin(){
+    function getLogin()
+    {
 
         require_once './database/Conection_db.php';
 

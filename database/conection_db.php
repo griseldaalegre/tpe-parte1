@@ -1,18 +1,21 @@
 <?php
-class ConectionDb {
-    
+class ConectionDb
+{
+
     private $db;
 
-    function __construct() {
+    function __construct()
+    {
         $this->conect();
     }
 
-    function conect() {
+    function conect()
+    {
         $this->db = new PDO('mysql:host=localhost;dbname=biblioteca;charset=utf8', 'root', '');
     }
 
-    function getDb() {
+    function getDb()
+    {
         return $this->db;
     }
 }
-?>

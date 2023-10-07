@@ -2,18 +2,20 @@
 
 require_once './apps/views/HomeView.php';
 
-class HomeController {
+class HomeController
+{
     //private $model;
     private $view;
 
-    public function __construct() {
-        
+    public function __construct()
+    {
+
         $this->view = new HomeView();
-        
     }
 
-    public function showHome() {
-      
+    public function showHome()
+    {
+
         // muestro las tareas desde la vista
         $this->view->showHome();
     }

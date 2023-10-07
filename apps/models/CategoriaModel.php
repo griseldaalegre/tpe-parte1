@@ -1,24 +1,47 @@
 <?php
-class CategoriasModel {
 
-    function getCategorias() {
+class CategoriasModel
+{
+    private $db;
+
+    public function __construct()
+    {
         require_once './database/Conection_db.php';
 
         $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
-        $db = $conexionDb->getDb(); // Obtener la conexión
+        $this->db = $conexionDb->getDb(); // Obtener la conexión y asignarla a $this->db
+    }
 
-        $query = $db->prepare('SELECT * FROM categorias');
+    function getCategorias()
+    {
+        $query = $this->db->prepare('SELECT * FROM categorias');
         $query->execute();
 
-        // $categorias es un arreglo de categorias
+        // $categorias es un arreglo de categorías
         $categorias = $query->fetchAll(PDO::FETCH_OBJ);
 
         return $categorias;
     }
+
+    function deleteCategoria($id)
+    {
+        $query = $this->db->prepare('DELETE FROM categorias WHERE id_categoria = ?');
+        $query->execute([$id]);
+    }
+
+    function insertCategoria($categoria){
+        $query = $this->db->prepare('INSERT INTO categorias (categoria) VALUES(?)');
+        $query->execute([$categoria]);
+        return $this->db->lastInsertId();
+    }
+    
 }
 
-class CategoriaModel {
-    function getCategoria($href){
+
+class CategoriaModel
+{
+    function getCategoria($href)
+    {
         require_once './database/Conection_db.php';
 
         $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
@@ -35,6 +58,3 @@ class CategoriaModel {
         return $categoria;
     }
 }
-    
-
-?>
