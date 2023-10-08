@@ -1,7 +1,7 @@
 <?php
 require_once 'apps/controllers/HomeController.php';
 require_once 'apps/controllers/CategoriasController.php';
-require_once 'apps/controllers/LoginController.php';
+require_once 'apps/controllers/AuthController.php';
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
@@ -21,22 +21,19 @@ $params = explode('/', $action);
 switch ($params[0]) {
 
     case 'home': //Muestra el Home
-        $controller = new HomeController();
+       $controller = new HomeController();
         $controller->showHome();
         break;
-
     case 'categorias': //Muestra lista de categorias
         $controller = new CategoriasController();
         $controller->showCategorias();
         break;
-
     case 'categoria': //Muestra lista de libros
         $controller = new CategoriaController();
         $controller->showCategoriaById($params[1]);
         break;
-
     case 'login':
-        $controller = new LoginController();
+        $controller = new AuthController();
         $controller->showLogin();
         break;
     case 'eliminarCategoria':
@@ -51,7 +48,15 @@ switch ($params[0]) {
         $controller = new CategoriaController();
         $controller-> editCategoria($params[1]);
         break;
-    default:
+    case 'auth':
+        $controller = new AuthController();
+        $controller->auth();
+        break;
+    case 'singup':
+        $controller = new AuthController();
+        $controller->showSingup();
+        break;  
+    default: 
         echo "404 Page Not Found";
         break;
 }
