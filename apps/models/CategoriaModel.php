@@ -34,6 +34,20 @@ class CategoriasModel
         $query->execute([$categoria]);
         return $this->db->lastInsertId();
     }
+
+    public function updateCategoria($id, $categoria)
+    {
+        $query = $this->db->prepare('UPDATE categorias SET categoria = ? WHERE id_categoria = ?');
+        $query->execute([$categoria, $id]);
+    }
+    
+    function modifyCategoria($id){
+        $query = $this->db->prepare('UPDATE categorias SET categoria = ? WHERE id = ?');
+        $query->execute([$categoria, $id]);
+    
+        $this->model->updateCategoria($id);
+    }
+    
     
 }
 

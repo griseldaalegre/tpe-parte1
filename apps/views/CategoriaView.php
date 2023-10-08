@@ -15,7 +15,8 @@ class CategoriasView
                 <li class="list-group-item item-task">
                     <div class="d-flex justify-content-around">
                         <a href="categoria/<?php echo $href ?>"><?php echo $categoria->categoria ?></a>
-                        <a href="eliminarCategoria/<?= $href  ?>" type="button" class='btn btn-danger ml-auto'>Eliminar categoria</a>
+                        <a href="editarCategoria/<?= $href  ?>" type="button" class='btn btn-danger ml-auto'>Editar categoria</a>
+                        <a href="eliminarCategoria/<?= $href  ?>" type="button" class='btn btn-secondary ml-auto'>Eliminar categoria</a>
                     </div>
                 </li>
 

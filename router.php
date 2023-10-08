@@ -47,6 +47,10 @@ switch ($params[0]) {
         $controller = new CategoriasController();
         $controller->addCategoria();
         break;
+    case 'editCategoria':
+        $controller = new CategoriaController();
+        $controller-> editCategoria($params[1]);
+        break;
     default:
         echo "404 Page Not Found";
         break;

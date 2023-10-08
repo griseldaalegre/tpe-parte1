@@ -28,16 +28,32 @@ class CategoriasController
     {
         $categoria = $_POST['categoria'];
         if(empty($categoria)){
-            echo "error"; // $this->view->showError("Debe completar todos los campos"); return;
-        }
-        $nuevaCategoria = $this->model->insertCategoria($categoria);
-        if($nuevaCategoria){
-            header('Location: ' . BASE_URL);
+            echo "error"; // Muestra un mensaje de error cuando la categoría está vacía
         } else {
-            echo "error"; // $this->view->showError("Error al insertar la tarea");
+            $nuevaCategoria = $this->model->insertCategoria($categoria);
+            if($nuevaCategoria){
+                header('Location: ' . BASE_URL);
+            } else {
+                echo "error"; // Muestra un mensaje de error si ocurre un error al insertar la categoría
+            }
         }
-
     }
+
+    public function editCategoria($id)
+    {
+     
+        if(empty($id)){
+            echo "error"; 
+        } else {
+            $nuevaCategoria = $this->model-> modifyCategoria($id);
+            if($nuevaCategoria){
+                header('Location: ' . BASE_URL);
+            } else {
+                echo "error"; // Muestra un mensaje de error si ocurre un error al insertar la categoría
+            }
+        }
+    }
+    
 }
 class CategoriaController
 {
