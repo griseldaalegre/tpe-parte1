@@ -101,3 +101,8 @@ footer {
   max-width: none;
   width: 100%;
 }
+
+.container-categoria-button{
+  display: flex;
+  justify-content: space-evenly;
+}

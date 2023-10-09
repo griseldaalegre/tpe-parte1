@@ -3,15 +3,28 @@
         $href = '';
 
         ?>
-            <ul class="list-group">
-                <?php foreach($categorias as $categoria) { 
-                    $href = $categoria->id_categoria;
-                ?>
-                    <li class="list-group-item item-task">
-                        <div>
-                            <a href="categoria/<?php echo $href ?>"><?php echo $categoria->categoria ?></a>
-                        </div>
-                    </li>
-                    <?php } ?>
-                </ul>
-                <?php require_once './templates/Footer.phtml'; ?>
+           <table class="table col-6">
+    <thead>
+    <tr class="justify-content-evently">
+            <th col-sm-4>Categoría</th>
+            <th col-sm-4>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($categorias as $categoria) { 
+            $href = $categoria->id_categoria;
+        ?>
+      <tr class="justify-content-between">
+            <td>
+                <a href="categoria/<?php echo $href ?>"><?php echo $categoria->categoria ?></a>
+            </td>
+            <td>
+                <a href="editCategoria/<?= $href  ?>" type="button" class='btn btn-primary btn-sm btn-edit'>Editar</a>
+                
+                <a href="eliminarCategoria/<?= $href  ?>" type="button" class='btn btn-danger btn-sm'>Eliminar</a>
+            </td>
+        </tr>
+        <?php } ?>
+    </tbody>
+</table>
+<?php require 'templates/FormCategoria.phtml' ?>

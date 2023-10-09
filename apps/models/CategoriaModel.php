@@ -10,10 +10,14 @@ class CategoriasModel
 
         $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
         $this->db = $conexionDb->getDb(); // Obtener la conexión y asignarla a $this->db
-    }
+    } // Hacer una variable parqa q podamos usarla desde cualquier funcion de esta clase $db;
 
     function getCategorias()
     {
+        require_once './database/Conection_db.php';
+
+        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
+        $db = $conexionDb->getDb();
         $query = $this->db->prepare('SELECT * FROM categorias');
         $query->execute();
 
@@ -35,17 +39,20 @@ class CategoriasModel
         return $this->db->lastInsertId();
     }
 
-    public function updateCategoria($id, $categoria)
+    public function getCategoriaById($id)
     {
-        $query = $this->db->prepare('UPDATE categorias SET categoria = ? WHERE id_categoria = ?');
-        $query->execute([$categoria, $id]);
+    $query = $this->db->prepare('SELECT * FROM categorias WHERE id_categoria = ?');
+    $query->execute([$id]);
+
+    // Obtener la categoría como un objeto
+    $categoria = $query->fetch(PDO::FETCH_OBJ);
+
+    return $categoria;
     }
-    
-    function modifyCategoria($id){
-        $query = $this->db->prepare('UPDATE categorias SET categoria = ? WHERE id = ?');
-        $query->execute([$categoria, $id]);
-    
-        $this->model->updateCategoria($id);
+
+    public function modifyCategoria($categoriaEditada, $idCategoria ) {
+        $query = $this->db->prepare('UPDATE categorias SET categoria = ? WHERE categoria = ?');
+        $query->execute([$categoriaEditada, $idCategoria]);
     }
     
     

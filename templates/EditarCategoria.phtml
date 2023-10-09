@@ -1,7 +1,7 @@
-<form action="editarCategoria" method="POST" class="form-categoria">
+<form action="actualizarCategoria" method="POST" class="form-categoria">
     <div>
         <label for="editCategoria">Editar categoría</label>
-        <input class="form-control form-control-sm" name="categoriaEdit" type="text" placeholder="Editar categoría">
+        <input class="form-control form-control-sm" name="categoriaEdit" type="text" placeholder="Editar categoría" value="<?php echo $categoria->categoria ?>">
     </div>
-    <button type="submit" class="btn btn-secondary">Agregar categoría</button>
+    <button type="submit" class="btn btn-secondary">Actualizar categoría</button>
 </form>

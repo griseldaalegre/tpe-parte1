@@ -22,7 +22,7 @@ class CategoriasController
     public function removeCategoria($id)
     {
         $this->model->deleteCategoria($id);
-        header('Location: ' . BASE_URL);
+        $this->showCategorias();
     }
     public function addCategoria()
     {
@@ -32,29 +32,40 @@ class CategoriasController
         } else {
             $nuevaCategoria = $this->model->insertCategoria($categoria);
             if($nuevaCategoria){
-                header('Location: ' . BASE_URL);
+                header('Location: ' . BASE_URL . '/categorias');
             } else {
                 echo "error"; // Muestra un mensaje de error si ocurre un error al insertar la categoría
             }
         }
     }
 
+
     public function editCategoria($id)
     {
-     
-        if(empty($id)){
-            echo "error"; 
+        $categoria = $this->model->getCategoriaById($id);
+        $this->view->showEditCategoriaForm($categoria);
+    }
+    
+
+    public function updateCategoria($id)
+    {
+        $categoria = $_POST['categoriaEdit'];
+        if (empty($categoria)) {
+            echo "error";
         } else {
-            $nuevaCategoria = $this->model-> modifyCategoria($id);
-            if($nuevaCategoria){
-                header('Location: ' . BASE_URL);
+            $nuevaCategoria = $this->model->modifyCategoria($categoria, $id);
+            if ($nuevaCategoria) {
+                header('Location: ' . BASE_URL . '/categorias');
             } else {
-                echo "error"; // Muestra un mensaje de error si ocurre un error al insertar la categoría
+                echo "error"; 
             }
         }
     }
     
+
 }
+    
+
 class CategoriaController
 {
     //privates
