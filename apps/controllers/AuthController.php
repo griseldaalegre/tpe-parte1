@@ -2,52 +2,56 @@
 
 require_once './apps/models/LoginModel.php';
 require_once './apps/views/LoginView.php';
+require_once './apps/helpers/auth.helper.php';
 
 class AuthController {
     
-    private $model;
     private $view;
+    private $model;
 
     public function __construct() {
-        //$this->model = new CategoriaModel()
-        $this->model = new LoginModel();
-        $this->view = new LoginView();
         
+        $this->model = new LoginModel();
+        $this->view = new LoginView();  
     }
     
     public function showLogin() {
-        $usuarios = $this->model->getlogin();
         $this->view->showLogin();
-
     }
 
-    public function showSingup() {
-        $this->view->showSingup();
-    }
     
     public function auth(){
-        $usuario = $_POST['usuario'];
+        
+        $usuarios = $_POST['usuario'];
         $password = $_POST['password'];
-
-        if (empty($usuario) || empty($password)) {
-            $this->view->showLogin('Faltan completar datos');
+        
+        if (empty($usuarios) || empty($password)) {
+            //$this->view->showLogin('Faltan completar datos');
+            echo 'falta completar campos';
             return;
         }
-
-        $user = $this->model->getLogin($usuario);
-        if ($user && password_verify($password, $user->password)) {
+        
+        //else {
             
+            $user = $this->model->getByUser();
+            echo $password;
+            if ($user && password_verify($password, $user->clave_usuario)) {
+                
+                echo 'adentro';
+                AuthHelper::login($user);
+                
+                header('Location: ' . BASE_URL);
+                } 
+            else {
+                $this->view->showErrorLogin();
+            }        
+                //}                    
+                
+                
+            }
             
-            //AuthHelper::login($user);
-            
-            header('Location: ' . BASE_URL);
-        } else {
-            $this->view->showLogin('Usuario inválido');
+            public function showSingup() {
+                $this->view->showSingup();
+            }
         }
-    }
-
-
-
-    }
-
-
+        

@@ -8,4 +8,7 @@ class LoginView {
   public function showSingup(){
     require_once './templates/alta.phtml';
   }
+ public  function showErrorLogin(){
+ 
+ }
 }
