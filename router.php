@@ -49,9 +49,8 @@ switch ($params[0]) {
         $controller-> editCategoria($params[1]);
         break;
     case 'actualizarCategoria':
-            $controller = new CategoriasController();
-            $controller-> updateCategoria();
-          
+        $controller = new CategoriasController();
+        $controller-> updateCategoria($params[1]);
             break;
     case 'auth':
         $controller = new AuthController();

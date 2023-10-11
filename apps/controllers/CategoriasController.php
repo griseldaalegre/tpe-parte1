@@ -19,20 +19,22 @@ class CategoriasController
         $categorias = $this->model->getCategorias();
         $href = $this->view->showCategorias($categorias);
     }
+
     public function removeCategoria($id)
     {
         $this->model->deleteCategoria($id);
-        $this->showCategorias();
+        header('Location: ' . BASE_URL . 'categorias');
     }
+    
     public function addCategoria()
     {
-        $categoria = $_POST['categoria'];
+        $categoria = $_GET['categoria'];
         if(empty($categoria)){
             echo "error"; // Muestra un mensaje de error cuando la categoría está vacía
         } else {
             $nuevaCategoria = $this->model->insertCategoria($categoria);
             if($nuevaCategoria){
-                header('Location: ' . BASE_URL . '/categorias');
+                header('Location: ' . BASE_URL . 'categorias');
             } else {
                 echo "error"; // Muestra un mensaje de error si ocurre un error al insertar la categoría
             }
@@ -44,22 +46,25 @@ class CategoriasController
     {
         $categoria = $this->model->getCategoriaById($id);
         $this->view->showEditCategoriaForm($categoria);
+
     }
     
 
     public function updateCategoria($id)
     {
-        $categoria = $_POST['categoriaEdit'];
+        $categoria = $_GET['newCategoria'];
+        var_dump($categoria);
         if (empty($categoria)) {
             echo "error";
         } else {
-            $nuevaCategoria = $this->model->modifyCategoria($categoria, $id);
+            $this->model->modifyCategoria($categoria, $id);
             if ($nuevaCategoria) {
-                header('Location: ' . BASE_URL . '/categorias');
+                header('Location: ' . BASE_URL . 'categorias');
             } else {
                 echo "error"; 
             }
         }
+
     }
     
 
@@ -74,10 +79,9 @@ class CategoriaController
 
     public function __construct()
     {
-        //$categoria = getCategoriaById($id);
+      
         $this->model = new CategoriaModel();
         $this->view = new CategoriaView();
-        // $this->view = new CategoriaView();
     }
 
     public function showCategoriaById($categoria)

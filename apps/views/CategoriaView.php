@@ -24,6 +24,3 @@ class CategoriaView {
         require_once './templates/libros.phtml';
     }
 }
-
-
-?>

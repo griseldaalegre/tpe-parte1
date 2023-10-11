@@ -33,7 +33,8 @@ class CategoriasModel
         $query->execute([$id]);
     }
 
-    function insertCategoria($categoria){
+    function insertCategoria($categoria)
+    {
         $query = $this->db->prepare('INSERT INTO categorias (categoria) VALUES(?)');
         $query->execute([$categoria]);
         return $this->db->lastInsertId();
@@ -50,12 +51,11 @@ class CategoriasModel
     return $categoria;
     }
 
-    public function modifyCategoria($categoriaEditada, $idCategoria ) {
-        $query = $this->db->prepare('UPDATE categorias SET categoria = ? WHERE categoria = ?');
-        $query->execute([$categoriaEditada, $idCategoria]);
+    public function modifyCategoria($categoria, $id)
+    {
+        $query = $this->db->prepare('UPDATE categorias SET id_categoria= ? , categoria = ?');
+        $query->execute([$categoria, $id]);
     }
-    
-    
 }
 
 
