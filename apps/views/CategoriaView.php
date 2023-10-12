@@ -9,8 +9,9 @@ class CategoriasView
         return $href;
     }
 
-    public function showEditCategoriaForm($categoria)
-{
+    public function showEditCategoriaForm($categoria, $id)
+{   
+
     require_once './templates/EditarCategoria.phtml';
     
 }

@@ -53,9 +53,11 @@ class CategoriasModel
 
     public function modifyCategoria($categoria, $id)
     {
-        $query = $this->db->prepare('UPDATE categorias SET id_categoria= ? , categoria = ?');
+        $query = $this->db->prepare('UPDATE categorias SET categoria = ? WHERE id_categoria = ?');
         $query->execute([$categoria, $id]);
+  
     }
+    
 }
 
 

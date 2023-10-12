@@ -44,26 +44,25 @@ class CategoriasController
 
     public function editCategoria($id)
     {
+
         $categoria = $this->model->getCategoriaById($id);
-        $this->view->showEditCategoriaForm($categoria);
+        $this->view->showEditCategoriaForm($categoria, $id);
 
     }
     
 
     public function updateCategoria($id)
-    {
+    {  
         $categoria = $_GET['newCategoria'];
-        var_dump($categoria);
+        
         if (empty($categoria)) {
             echo "error";
         } else {
             $this->model->modifyCategoria($categoria, $id);
-            if ($nuevaCategoria) {
-                header('Location: ' . BASE_URL . 'categorias');
-            } else {
-                echo "error"; 
-            }
+          
         }
+
+        header('Location: ' . BASE_URL . 'categorias');
 
     }
     
