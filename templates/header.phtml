@@ -36,9 +36,15 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Abouts</a>
         </li>
+        <?php if (!isset($_SESSION['USER_ID'])) : ?>
         <li class="nav-item">
           <a class="nav-link" href="login">Login</a>
         </li>
+        <?php else : ?>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="logout">Logout (<?= $_SESSION['USER_NOMBRE'] ?>)</a>
+        </li>
+        <?php endif ?>
       </ul>
     </div>
   </div>

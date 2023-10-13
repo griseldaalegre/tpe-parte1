@@ -46,7 +46,11 @@ switch ($params[0]) {
     case 'singup':
         $controller = new AuthController();
         $controller->showSingup();
-        break;  
+        break;
+    case 'logout':
+        $controller = new AuthController();
+        $controller->logout();
+        break;   
     default: 
         echo "404 Page Not Found";
         break;
