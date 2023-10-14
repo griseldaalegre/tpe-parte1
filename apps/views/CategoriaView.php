@@ -18,7 +18,7 @@ class CategoriasView
     
 }
 
-class CategoriaView {
+class CategoriaView {//idlibros
     public function showCategoriaById($categoria, $categoriaId) {
         require_once './templates/libros.phtml';
     }

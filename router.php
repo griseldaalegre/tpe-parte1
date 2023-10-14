@@ -2,6 +2,7 @@
 require_once 'apps/controllers/HomeController.php';
 require_once 'apps/controllers/CategoriasController.php';
 require_once 'apps/controllers/AuthController.php';
+require_once 'apps/controllers/AboutController.php';
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
@@ -40,10 +41,6 @@ switch ($params[0]) {
         $controller = new CategoriaController();
         $controller->addLibro($params[1]);
         break; 
-    case 'login':
-        $controller = new AuthController();
-        $controller->showLogin();
-        break;
     case 'eliminarCategoria':
         $controller = new CategoriasController();
         $controller->removeCategoria($params[1]);
@@ -58,15 +55,27 @@ switch ($params[0]) {
     case 'editCategoria':
         $controller = new CategoriasController();
          $controller-> editCategoria($params[1]);
-        break;     
-    case 'auth':
+        break;    
+    case 'login'://Muestra el login
+        $controller = new AuthController();
+        $controller->showLogin();
+        break;
+    case 'singup'://Muestra la carga de usuarios
+        $controller = new AuthController();
+        $controller->showSingup();
+        break;
+    case 'about'://Muestra el about
+        $controller = new AboutController();
+        $controller->showAbout();
+        break;   
+    case 'auth'://Autentifica los usuarios
         $controller = new AuthController();
         $controller->auth();
         break;
-    case 'singup':
+    case 'logOut'://Deslogea a los usuarios
         $controller = new AuthController();
-        $controller->showSingup();
-        break;  
+        $controller->logOut();
+        break;   
     default: 
         echo "404 Page Not Found";
         break;

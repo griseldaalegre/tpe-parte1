@@ -2,7 +2,6 @@
 .login {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   align-items: center;
 }
 
@@ -13,7 +12,6 @@ form {
   background-color: #f2f2f2;
   border: 1px solid #ddd;
   border-radius: 2%;
-
 }
 
 /* Estilo para las etiquetas */
@@ -22,8 +20,8 @@ label {
   margin-bottom: 3%;
 }
 
-/* Estilo para los campos de entrada */
-input[type="email"],
+
+nput[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 4%;
@@ -32,7 +30,6 @@ input[type="password"] {
   border-radius: 3%;
 }
 
-/* Estilo para el botón de inicio de sesión 
 button[type="submit"] {
   background-color: #007bff;
   color: #fff;
@@ -40,7 +37,7 @@ button[type="submit"] {
   border: none;
   border-radius: 65%;
   cursor: pointer;
-}*/
+}
 
 /* Estilo para los enlaces "Sign up" y "Forgot password?" */
 a {
@@ -50,7 +47,7 @@ a {
 }
 
 /* Estilo para el contenedor de los enlaces */
-div>div {
+div > div {
   margin-top: 1%;
 }
 
@@ -69,13 +66,10 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  margin: 0;
 }
 
 main {
   flex-grow: 1;
-  /* Hace que el contenido crezca para llenar el espacio restante */
-  /* Estilos para el contenido principal */
 }
 
 footer {
@@ -105,4 +99,39 @@ footer {
 .container-categoria-button{
   display: flex;
   justify-content: space-evenly;
+
+}
+
+footer {
+  width: 100%;
+  background-color: #f8f9fa;
+  color: #f8f9fa;
+}
+
+.list-group {
+  margin-bottom: 21%;
+}
+
+h2 {
+  color: #333;
+}
+
+p {
+  font-size: 100%;
+  line-height: 1.6;
+  color: #555;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+li {
+  line-height: 1.6;
+  color: #555;
+}
+.about{
+  margin: 2%;
 }

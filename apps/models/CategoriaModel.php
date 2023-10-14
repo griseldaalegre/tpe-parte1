@@ -15,7 +15,6 @@ class CategoriasModel
     function getCategorias()
     {
         require_once './database/Conection_db.php';
-
         $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
         $db = $conexionDb->getDb();
         $query = $this->db->prepare('SELECT * FROM categorias');
@@ -29,6 +28,9 @@ class CategoriasModel
 
     function deleteCategoria($id)
     {
+        require_once './database/Conection_db.php';
+        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
+        $db = $conexionDb->getDb();
         $query = $this->db->prepare('DELETE FROM categorias WHERE id_categoria = ?');
         $query->execute([$id]);
     }
@@ -63,14 +65,7 @@ class CategoriasModel
 
 class CategoriaModel
 {
-    public function __construct()
-    {
-        require_once './database/Conection_db.php';
-
-        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
-        $this->db = $conexionDb->getDb(); // Obtener la conexión y asignarla a $this->db
-    } // Hacer una variable parqa q podamos usarla desde cualquier funcion de esta clase $db;
-
+   
     function getCategoria($href)
     {
         require_once './database/Conection_db.php';
@@ -84,13 +79,16 @@ class CategoriaModel
         $query->execute([$href]);
 
         // $categorias es un arreglo de categorias
-        $categoria = $query->fetchAll(PDO::FETCH_OBJ);
+        $categoria2 = $query->fetchAll(PDO::FETCH_OBJ);
 
-        return $categoria;
+        return $categoria2;
     }
 
     function deleteLibro($id)
     {
+        require_once './database/Conection_db.php';
+        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
+        $this->db = $conexionDb->getDb(); // Obtener la conexión y asignarla a $this->db
         $query = $this->db->prepare('DELETE FROM libros WHERE id_libro = ?');
         $query->execute([$id]);
     }

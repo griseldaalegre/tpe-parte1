@@ -1,19 +1,23 @@
 <?php
 require_once './apps/models/CategoriaModel.php';
 require_once './apps/views/CategoriaView.php';
+require_once './apps/helpers/AuthHelper.php';
 
 class CategoriasController
 {
     //privates
+    
     private $model;
     private $view;
 
-    public function __construct()
-    {
-        //$this->model = new CategoriaModel()
+
+    public function __construct() {
+    
+        AuthHelper::verify();
         $this->model = new CategoriasModel();
         $this->view = new CategoriasView();
     }
+
     public function showCategorias()
     {
         $categorias = $this->model->getCategorias();
@@ -76,24 +80,26 @@ class CategoriaController
     private $model;
     private $view;
 
-    public function __construct()
-    {
-      
+    public function __construct() {
+        
+        AuthHelper::verify();
+
         $this->model = new CategoriaModel();
         $this->view = new CategoriaView();
+       
     }
 
     public function showCategoriaById($categoriaId)
     {
-        $categoria = $this->model->getCategoria($categoriaId);
+        $categoria2 = $this->model->getCategoria($categoriaId);
         // muestro la tabla 
-        $this->view->showCategoriaById($categoria, $categoriaId);
-    }
+        $this->view->showCategoriaById($categoria2, $categoriaId);
+    } //repasar
 
     public function removeLibro($id)
     {
         $this->model->deleteLibro($id);
-        header('Location: ' . BASE_URL . 'categoria');
+        header('Location: ' . BASE_URL . 'categorias');
     }
 
     public function addLibro($categoriaId) {
@@ -111,6 +117,5 @@ class CategoriaController
 
         }
     }
-    
     
 }
