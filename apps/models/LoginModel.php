@@ -1,7 +1,7 @@
 <?php
 class LoginModel {
 
-    function getByUser(){
+    function getLogin($usuario){
 
         require_once './database/Conection_db.php';
 
@@ -9,11 +9,12 @@ class LoginModel {
         $db = $conexionDb->getDb(); // Obtener la conexión
 
         $query = $db->prepare('SELECT * FROM usuarios WHERE nombre_usuario = ?');
-        $query->execute([$nombre_usuario]);
+        $query->execute([$usuario]);
 
-       
-        $usuario = $query->fetch(PDO::FETCH_OBJ);
+        // $usuarios es un arreglo de categorias
+        $user = $query->fetch(PDO::FETCH_OBJ);
 
-        return $usuario;
+        return $user;
     }
+    
 }

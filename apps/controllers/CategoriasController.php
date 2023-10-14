@@ -1,14 +1,18 @@
 <?php
 require_once './apps/models/CategoriaModel.php';
 require_once './apps/views/CategoriaView.php';
+require_once './apps/helpers/AuthHelper.php';
 
 class CategoriasController {
     //privates
+    
     private $model;
     private $view;
 
     public function __construct() {
-        //$this->model = new CategoriaModel()
+    
+        AuthHelper::verify();
+
         $this->model = new CategoriasModel();
         $this->view = new CategoriasView();
         
@@ -25,10 +29,12 @@ class CategoriaController {
     private $view;
     
     public function __construct() {
-        //$categoria = getCategoriaById($id);
+        
+        AuthHelper::verify();
+
         $this->model = new CategoriaModel();
         $this->view = new CategoriaView();
-       // $this->view = new CategoriaView();
+       
     }
 
     public function showCategoriaById($categoria) {

@@ -2,7 +2,7 @@
 
 require_once './apps/models/LoginModel.php';
 require_once './apps/views/LoginView.php';
-require_once './apps/helpers/auth.helper.php';
+require_once './apps/helpers/AuthHelper.php';
 
 class AuthController {
     
@@ -17,41 +17,44 @@ class AuthController {
     
     public function showLogin() {
         $this->view->showLogin();
+        
     }
-
     
     public function auth(){
         
-        $usuarios = $_POST['usuario'];
+        $usuario = $_POST['usuario'];
         $password = $_POST['password'];
         
-        if (empty($usuarios) || empty($password)) {
-            //$this->view->showLogin('Faltan completar datos');
-            echo 'falta completar campos';
+        if (empty($usuario) || empty($password)) {
+            $this->view->showLogin('Faltan completar datos');
             return;
         }
-        
-        //else {
             
-            $user = $this->model->getByUser();
-            echo $password;
-            if ($user && password_verify($password, $user->clave_usuario)) {
-                
-                echo 'adentro';
+        $user = $this->model->getLogin($usuario);
+        
+        if ($user && password_verify($password, $user->clave_usuario)) {
+            
+            
                 AuthHelper::login($user);
                 
                 header('Location: ' . BASE_URL);
-                } 
-            else {
-                $this->view->showErrorLogin();
-            }        
-                //}                    
-                
-                
-            }
-            
-            public function showSingup() {
-                $this->view->showSingup();
-            }
+                         
+        } else {
+            $this->view->showLogin('Usuario inválido');
         }
-        
+    }
+    public function logOut() {
+        AuthHelper::logOut();
+        header('Location: ' . BASE_URL);    
+    }
+    
+    public function showSingup() {
+        $this->view->showSingup();
+    }
+
+    public function upUser() {
+
+    }
+}
+
+
