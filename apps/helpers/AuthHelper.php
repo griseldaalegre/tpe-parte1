@@ -1,7 +1,7 @@
 <?php
 
 class AuthHelper {
-
+    
     public static function init() {
         if (session_status() != PHP_SESSION_ACTIVE) {
             session_start();
@@ -10,18 +10,19 @@ class AuthHelper {
 
     public static function login($user) {
         AuthHelper::init();
-  
-        $_SESSION['USER_NOMBRE'] = $user->nombre_usuario; 
+        $_SESSION['USER_ROL'] = $user->rol;
+        $_SESSION['USER_NOMBRE'] = $user->nombre_usuario;
+        $_SESSION['USER_ID'] = $user->id_usuarios; 
     }
-
+    
     public static function logOut() {
         AuthHelper::init();
         session_destroy();
     }
-
+    
     public static function verify() {
         AuthHelper::init();
-        if (isset($_SESSION['USER_ID'])) {
+        if (!isset($_SESSION['USER_ID'])) {
             header('Location: ' . BASE_URL . '/login');
             die();
         }

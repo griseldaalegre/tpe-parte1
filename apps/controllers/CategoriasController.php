@@ -2,6 +2,7 @@
 require_once './apps/models/CategoriaModel.php';
 require_once './apps/views/CategoriaView.php';
 require_once './apps/helpers/AuthHelper.php';
+require_once './database/config.php';
 
 class CategoriasController
 {
@@ -9,24 +10,23 @@ class CategoriasController
     
     private $model;
     private $view;
-
-
-    public function __construct() {
     
+    public function __construct() {
+        
         AuthHelper::verify();
         $this->model = new CategoriasModel();
         $this->view = new CategoriasView();
     }
-
+    
     public function showCategorias()
     {
         $categorias = $this->model->getCategorias();
         $href = $this->view->showCategorias($categorias);
     }
 
-    public function removeCategoria($idCategoria)
+    public function removeCategoria($id)
     {
-        $this->model->deleteCategoria($idCategoria);
+        $this->model->deleteCategoria($id);
         header('Location: ' . BASE_URL . 'categorias');
     }
     
@@ -94,6 +94,7 @@ class CategoriaController
         $ListadoLibros = $this->model->getLibrosByCategoria($categoriaId);
         // muestro la tabla 
         $this->view->showLibrosByCategoriaId($ListadoLibros, $categoriaId);
+       
     } //repasar
 
     public function removeLibro($idCategoria, $idLibro)
@@ -107,7 +108,7 @@ class CategoriaController
         $autor = $_GET['autor'];
         $anio = $_GET['anio'];
         $idCategoria = $categoriaId;
-        var_dump($idCategoria);
+    
     
         if (empty($idCategoria) || empty($titulo) || empty($autor) || empty($anio)) {
             echo "error, hay un campo vacio"; // Pregunta si alguno de los campos está vacío.

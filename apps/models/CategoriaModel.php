@@ -1,22 +1,22 @@
 <?php
 
+require_once './database/config.php';
+
 class CategoriasModel
 {
     private $db;
-
+    
     public function __construct()
     {
-        require_once './database/Conection_db.php';
-
-        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
-        $this->db = $conexionDb->getDb(); // Obtener la conexión y asignarla a $this->db
-    } // Hacer una variable parqa q podamos usarla desde cualquier funcion de esta clase $db;
+        require_once ('./database/Conection_db.php');
+        
+        $conexionDb = new ConectionDb(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $this->db = $conexionDb->getDb(); 
+    } 
 
     function getCategorias()
     {
-        require_once './database/Conection_db.php';
-        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
-        $db = $conexionDb->getDb();
+        
         $query = $this->db->prepare('SELECT * FROM categorias');
         $query->execute();
 
@@ -28,18 +28,13 @@ class CategoriasModel
 
     function deleteCategoria($idCategoria)
     {
-        require_once './database/Conection_db.php';
-        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
-        $db = $conexionDb->getDb();
+       
         $query = $this->db->prepare('DELETE FROM categorias WHERE id_categoria = ?');
         $query->execute([$idCategoria]);
     }
 
     function insertCategoria($categoria)
     {
-        require_once './database/Conection_db.php';
-        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
-        $this->db = $conexionDb->getDb(); // Obtener la conexión y asignarla a $this->db
         $query = $this->db->prepare('INSERT INTO categorias (categoria) VALUES(?)');
         $query->execute([$categoria]);
         return $this->db->lastInsertId();
@@ -68,17 +63,20 @@ class CategoriasModel
 
 class CategoriaModel
 {
+   private $db;
    
+   public function __construct()
+    {
+        require_once ('./database/Conection_db.php');
+        
+        $conexionDb = new ConectionDb(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $this->db = $conexionDb->getDb(); 
+    } 
+
     function getLibrosByCategoria($href)
     {
-        require_once './database/Conection_db.php';
 
-        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
-        $db = $conexionDb->getDb(); // Obtener la conexión
-
-        //$id = $categoria->id_categoria;
-
-        $query = $db->prepare('SELECT * FROM libros WHERE id_categoria = ?');
+        $query = $this->db->prepare('SELECT * FROM libros WHERE id_categoria = ?');
         $query->execute([$href]);
 
         // $categorias es un arreglo de categorias
@@ -89,26 +87,18 @@ class CategoriaModel
 
     function deleteLibro($idLibro)
     {
-        require_once './database/Conection_db.php';
-        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
-        $this->db = $conexionDb->getDb(); // Obtener la conexión y asignarla a $this->db
+      
         $query = $this->db->prepare('DELETE FROM libros WHERE id_libro = ?');
         $query->execute([$idLibro]);
     }
 
     function insertLibro($categoria, $titulo, $autor, $anio)
     {
-        require_once './database/Conection_db.php';
-        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
-        $this->db = $conexionDb->getDb(); // Obtener la conexión y asignarla a $this->db
+       // Obtener la conexión y asignarla a $this->db
         $query = $this->db->prepare('INSERT INTO libros (id_categoria, titulo_libro, autor_libro, anio) VALUES (?, ?, ?, ?)');
         
         $query->execute([$categoria, $titulo, $autor, $anio]);
         return $this->db->lastInsertId();
     }
     
-    
-    
-    
-
 }
