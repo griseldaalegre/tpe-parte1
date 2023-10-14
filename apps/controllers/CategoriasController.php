@@ -99,7 +99,7 @@ class CategoriaController
     public function removeLibro($idCategoria, $idLibro)
     {
         $this->model->deleteLibro($idLibro);
-        header('Location: ' . BASE_URL . 'categoria/' . $idCategoria);
+        header('Location: ' . BASE_URL . 'libroByCategoria/' . $idCategoria);
     }
 
     public function addLibro($categoriaId) {
@@ -113,7 +113,7 @@ class CategoriaController
             echo "error, hay un campo vacio"; // Pregunta si alguno de los campos está vacío.
         } else {
             $this->model->insertLibro($idCategoria, $titulo, $autor, $anio);
-            header('Location: ' . BASE_URL . 'categoria/' . $idCategoria);
+            header('Location: ' . BASE_URL . 'libroByCategoria/' . $idCategoria);
 
         }
     }
