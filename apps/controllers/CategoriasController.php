@@ -24,9 +24,9 @@ class CategoriasController
         $href = $this->view->showCategorias($categorias);
     }
 
-    public function removeCategoria($id)
+    public function removeCategoria($idCategoria)
     {
-        $this->model->deleteCategoria($id);
+        $this->model->deleteCategoria($idCategoria);
         header('Location: ' . BASE_URL . 'categorias');
     }
     
@@ -89,17 +89,17 @@ class CategoriaController
        
     }
 
-    public function showCategoriaById($categoriaId)
+    public function showLibrosByCategoriaId($categoriaId)
     {
-        $categoria2 = $this->model->getCategoria($categoriaId);
+        $ListadoLibros = $this->model->getLibrosByCategoria($categoriaId);
         // muestro la tabla 
-        $this->view->showCategoriaById($categoria2, $categoriaId);
+        $this->view->showLibrosByCategoriaId($ListadoLibros, $categoriaId);
     } //repasar
 
-    public function removeLibro($id)
+    public function removeLibro($idCategoria, $idLibro)
     {
-        $this->model->deleteLibro($id);
-        header('Location: ' . BASE_URL . 'categorias');
+        $this->model->deleteLibro($idLibro);
+        header('Location: ' . BASE_URL . 'categoria/' . $idCategoria);
     }
 
     public function addLibro($categoriaId) {

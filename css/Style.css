@@ -39,6 +39,15 @@ button[type="submit"] {
   cursor: pointer;
 }
 
+.form-categoria  button[type="submit"]{
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 0%;
+  cursor: pointer;
+}
+
 /* Estilo para los enlaces "Sign up" y "Forgot password?" */
 a {
   text-decoration: none;

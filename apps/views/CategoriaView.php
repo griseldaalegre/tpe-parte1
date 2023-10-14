@@ -19,7 +19,7 @@ class CategoriasView
 }
 
 class CategoriaView {//idlibros
-    public function showCategoriaById($categoria, $categoriaId) {
+    public function showLibrosByCategoriaId($listaLibros, $categoriaId) {
         require_once './templates/libros.phtml';
     }
 }

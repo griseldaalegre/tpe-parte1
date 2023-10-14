@@ -26,17 +26,20 @@ class CategoriasModel
         return $categorias;
     }
 
-    function deleteCategoria($id)
+    function deleteCategoria($idCategoria)
     {
         require_once './database/Conection_db.php';
         $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
         $db = $conexionDb->getDb();
         $query = $this->db->prepare('DELETE FROM categorias WHERE id_categoria = ?');
-        $query->execute([$id]);
+        $query->execute([$idCategoria]);
     }
 
     function insertCategoria($categoria)
     {
+        require_once './database/Conection_db.php';
+        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
+        $this->db = $conexionDb->getDb(); // Obtener la conexión y asignarla a $this->db
         $query = $this->db->prepare('INSERT INTO categorias (categoria) VALUES(?)');
         $query->execute([$categoria]);
         return $this->db->lastInsertId();
@@ -66,7 +69,7 @@ class CategoriasModel
 class CategoriaModel
 {
    
-    function getCategoria($href)
+    function getLibrosByCategoria($href)
     {
         require_once './database/Conection_db.php';
 
@@ -84,17 +87,20 @@ class CategoriaModel
         return $categoria2;
     }
 
-    function deleteLibro($id)
+    function deleteLibro($idLibro)
     {
         require_once './database/Conection_db.php';
         $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
         $this->db = $conexionDb->getDb(); // Obtener la conexión y asignarla a $this->db
         $query = $this->db->prepare('DELETE FROM libros WHERE id_libro = ?');
-        $query->execute([$id]);
+        $query->execute([$idLibro]);
     }
 
     function insertLibro($categoria, $titulo, $autor, $anio)
     {
+        require_once './database/Conection_db.php';
+        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
+        $this->db = $conexionDb->getDb(); // Obtener la conexión y asignarla a $this->db
         $query = $this->db->prepare('INSERT INTO libros (id_categoria, titulo_libro, autor_libro, anio) VALUES (?, ?, ?, ?)');
         
         $query->execute([$categoria, $titulo, $autor, $anio]);

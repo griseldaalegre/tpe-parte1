@@ -29,13 +29,13 @@ switch ($params[0]) {
         $controller = new CategoriasController();
         $controller->showCategorias();
         break;
-    case 'categoria': //Muestra lista de libros
+    case 'libroByCategoria': //Muestra lista de libros
         $controller = new CategoriaController();
-        $controller->showCategoriaById($params[1]);
+        $controller->showLibrosByCategoriaId($params[1]);
         break;
     case 'eliminarLibro':
         $controller = new CategoriaController();
-        $controller->removeLibro($params[2]);
+        $controller->removeLibro($params[1], $params[2]);
          break; 
     case 'agregarLibro':
         $controller = new CategoriaController();
