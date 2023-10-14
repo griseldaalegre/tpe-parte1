@@ -2,6 +2,7 @@
 require_once 'apps/controllers/HomeController.php';
 require_once 'apps/controllers/CategoriasController.php';
 require_once 'apps/controllers/AuthController.php';
+require_once 'apps/controllers/AboutController.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -21,7 +22,7 @@ $params = explode('/', $action);
 switch ($params[0]) {
 
     case 'home': //Muestra el Home
-       $controller = new HomeController();
+        $controller = new HomeController();
         $controller->showHome();
         break;
 
@@ -35,22 +36,31 @@ switch ($params[0]) {
         $controller->showCategoriaById($params[1]);
         break;
 
-    case 'login':
+    case 'login'://Muestra el login
         $controller = new AuthController();
         $controller->showLogin();
         break;
-    case 'auth':
-        $controller = new AuthController();
-        $controller->auth();
-        break;
-    case 'singup':
+
+    case 'singup'://Muestra la carga de usuarios
         $controller = new AuthController();
         $controller->showSingup();
         break;
-    case 'logout':
-        $controller = new AuthController();
-        $controller->logout();
+
+    case 'about'://Muestra el about
+        $controller = new AboutController();
+        $controller->showAbout();
         break;   
+
+    case 'auth'://Autentifica los usuarios
+        $controller = new AuthController();
+        $controller->auth();
+        break;
+
+    case 'logOut'://Deslogea a los usuarios
+        $controller = new AuthController();
+        $controller->logOut();
+        break;
+        
     default: 
         echo "404 Page Not Found";
         break;

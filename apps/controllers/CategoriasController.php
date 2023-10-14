@@ -11,6 +11,8 @@ class CategoriasController {
 
     public function __construct() {
     
+        AuthHelper::verify();
+
         $this->model = new CategoriasModel();
         $this->view = new CategoriasView();
         
@@ -27,10 +29,12 @@ class CategoriaController {
     private $view;
     
     public function __construct() {
-        //$categoria = getCategoriaById($id);
+        
+        AuthHelper::verify();
+
         $this->model = new CategoriaModel();
         $this->view = new CategoriaView();
-       // $this->view = new CategoriaView();
+       
     }
 
     public function showCategoriaById($categoria) {

@@ -13,11 +13,17 @@
             <label>Password</label>
             <input type="password" name="password" placeholder="Password">
         </div>
+
+        <?php if ($error) : ?>
+            <div class='alert alert-danger' role='alert'>
+                <?= $error ?>
+            </div> 
+        <?php endif ?>
         
         <div>
             <div class="uno">
             <input type="checkbox">
-            <label> Remember me </label>
+            <label> Remember me </label>      
         </div>
     
     </form>     
