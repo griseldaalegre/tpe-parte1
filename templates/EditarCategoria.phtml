@@ -1,6 +1,6 @@
+<?php require_once './templates/Header.phtml'; ?>
 <form action="actualizarCategoria/<?= $id  ?>" method="GET" class="form-categoria">
 
-<?php echo $datos; ?>
     <div>
         <label for="editCategoria/<?= $id  ?>">Editar categoría</label>
         <input class="form-control form-control-sm" name="newCategoria" type="text" value="<?php echo $categoria->categoria; ?>">
@@ -8,3 +8,6 @@
     </div>
     <button type="submit" class="btn btn-secondary">Actualizar categoría</button>
 </form>
+
+
+<?php require_once './templates/Footer.phtml'; ?>

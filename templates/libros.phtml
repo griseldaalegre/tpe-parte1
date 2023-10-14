@@ -1,35 +1,33 @@
-<?php require_once './templates/Header.phtml'; ?>
-        
-    <body>
-        
-        <table class="table table-striped">
-            
-            <thead>
-                
-                <tr>
-                    <th>Título</th>
-                    <th>Autor</th>
-                    <th>Año</th>
-                </tr>
-            
-            </thead>
-            
-            <tbody>
-            
-                <?php foreach($categoria as $categoria) { ?>
-                
-                <tr>
-                    <td><?php echo $categoria->titulo_libro ?></td>
-                    <td><?php echo $categoria->autor_libro ?></td>
-                    <td><?php echo $categoria->anio ?></td>
-                </tr>
-                
-                <?php } ?>
-            
-            </tbody>
-        
-        </table>
-    
-    </body>
-    
+<?php require_once './templates/Header.phtml'; 
+
+$href = '';
+
+?>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="col-sm-4">Título</th>
+            <th class="col-sm-4">Autor</th>
+            <th class="col-sm-4">Año</th>
+            <th class="col-sm-4">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($categoria as $libro) { 
+            echo $href;
+            ?>
+            <tr>
+                <td><?php echo $libro->titulo_libro ?></td>
+                <td><?php echo $libro->autor_libro ?></td>
+                <td><?php echo $libro->anio ?></td>
+                <td>
+                    <a href="eliminarLibro/<?= $href ?>" type="button" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        <?php } ?>
+
+    </tbody>
+</table>
+<?php require_once './templates/agregarLibro.phtml'; ?>
 <?php require_once './templates/Footer.phtml'; ?>

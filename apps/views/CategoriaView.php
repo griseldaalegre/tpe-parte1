@@ -11,9 +11,7 @@ class CategoriasView
 
     public function showEditCategoriaForm($categoria, $id)
 {   
-
     require_once './templates/EditarCategoria.phtml';
-    
 }
 
 
@@ -21,7 +19,7 @@ class CategoriasView
 }
 
 class CategoriaView {
-    public function showCategoriaById($categoria) {
+    public function showCategoriaById($categoria, $categoriaId) {
         require_once './templates/libros.phtml';
     }
 }

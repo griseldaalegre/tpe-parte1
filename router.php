@@ -21,7 +21,7 @@ $params = explode('/', $action);
 switch ($params[0]) {
 
     case 'home': //Muestra el Home
-       $controller = new HomeController();
+        $controller = new HomeController();
         $controller->showHome();
         break;
     case 'categorias': //Muestra lista de categorias
@@ -32,6 +32,14 @@ switch ($params[0]) {
         $controller = new CategoriaController();
         $controller->showCategoriaById($params[1]);
         break;
+    case 'eliminarLibro':
+        $controller = new CategoriaController();
+        $controller->removeLibro($params[2]);
+         break; 
+    case 'agregarLibro':
+        $controller = new CategoriaController();
+        $controller->addLibro($params[1]);
+        break; 
     case 'login':
         $controller = new AuthController();
         $controller->showLogin();
@@ -44,17 +52,13 @@ switch ($params[0]) {
         $controller = new CategoriasController();
         $controller->addCategoria();
         break;
+    case 'actualizarCategoria':
+        $controller = new CategoriasController();
+        $controller-> updateCategoria($params[1]);
     case 'editCategoria':
-        if($params[1] == "actualizarCategoria"){
-            $controller = new CategoriasController();
-            $controller-> updateCategoria($params[2]);
-
-        } else {
-            $controller = new CategoriasController();
-            $controller-> editCategoria($params[1]);
-        }
-       
-        break;       
+        $controller = new CategoriasController();
+         $controller-> editCategoria($params[1]);
+        break;     
     case 'auth':
         $controller = new AuthController();
         $controller->auth();
