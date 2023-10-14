@@ -65,7 +65,8 @@ class CategoriasModel
 
 class CategoriaModel
 {
-   
+    private $db;
+
     function getCategoria($href)
     {
         require_once './database/Conection_db.php';
@@ -87,14 +88,21 @@ class CategoriaModel
     function deleteLibro($id)
     {
         require_once './database/Conection_db.php';
+
         $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
         $this->db = $conexionDb->getDb(); // Obtener la conexión y asignarla a $this->db
+
         $query = $this->db->prepare('DELETE FROM libros WHERE id_libro = ?');
         $query->execute([$id]);
     }
 
     function insertLibro($categoria, $titulo, $autor, $anio)
     {
+        require_once './database/Conection_db.php';
+
+        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
+        $this->db = $conexionDb->getDb(); // Obtener la conexión y asignarla a $this->db
+        
         $query = $this->db->prepare('INSERT INTO libros (id_categoria, titulo_libro, autor_libro, anio) VALUES (?, ?, ?, ?)');
         
         $query->execute([$categoria, $titulo, $autor, $anio]);

@@ -29,14 +29,23 @@ switch ($params[0]) {
         $controller = new CategoriasController();
         $controller->showCategorias();
         break;
-    case 'categoria': //Muestra lista de libros
-        $controller = new CategoriaController();
-        $controller->showCategoriaById($params[1]);
-        break;
-    case 'eliminarLibro':
-        $controller = new CategoriaController();
-        $controller->removeLibro($params[2]);
-         break; 
+        case 'categoria':
+            if (count($params) >= 2) {
+                $controller = new CategoriaController();
+                $controller->showCategoriaById($params[1]);
+            } else {
+                // Manejar el caso en el que no se proporciona un ID
+            }
+            break;
+    
+        case 'eliminarLibro':
+            if (count($params) >= 3) {
+                $controller = new CategoriaController();
+                $controller->removeLibro($params[2]);
+            } else {
+                // Manejar el caso en el que no se proporciona un ID de libro
+            }
+            break;
     case 'agregarLibro':
         $controller = new CategoriaController();
         $controller->addLibro($params[1]);

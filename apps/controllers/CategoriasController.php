@@ -107,7 +107,7 @@ class CategoriaController
         $autor = $_GET['autor'];
         $anio = $_GET['anio'];
         $idCategoria = $categoriaId;
-        var_dump($idCategoria);
+    
     
         if (empty($idCategoria) || empty($titulo) || empty($autor) || empty($anio)) {
             echo "error, hay un campo vacio"; // Pregunta si alguno de los campos está vacío.
