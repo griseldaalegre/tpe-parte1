@@ -35,9 +35,20 @@ class AuthController {
         if ($user && password_verify($password, $user->clave_usuario)) {
             
             
-                AuthHelper::login($user);
+            AuthHelper::login($user);
+
+            
+            
+             if (isset($_SESSION['USER_ID'])) {
+                // Usuario autenticado
+                $rolUsuario    = $_SESSION['USER_ROL'];     
                 
-                header('Location: ' . BASE_URL);
+                if ($rolUsuario == 1) {
+                    header('Location: ' . BASE_URL);
+                } else if ($rolUsuario == 0) {
+                    header('Location: ' . BASE_URL);
+                }
+            }
                          
         } else {
             $this->view->showLogin('Usuario inválido');

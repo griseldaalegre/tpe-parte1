@@ -2,6 +2,7 @@
 require_once './apps/models/CategoriaModel.php';
 require_once './apps/views/CategoriaView.php';
 require_once './apps/helpers/AuthHelper.php';
+require_once './database/config.php';
 
 class CategoriasController
 {
@@ -9,15 +10,14 @@ class CategoriasController
     
     private $model;
     private $view;
-
-
-    public function __construct() {
     
+    public function __construct() {
+        
         AuthHelper::verify();
         $this->model = new CategoriasModel();
         $this->view = new CategoriasView();
     }
-
+    
     public function showCategorias()
     {
         $categorias = $this->model->getCategorias();
@@ -89,17 +89,18 @@ class CategoriaController
        
     }
 
-    public function showCategoriaById($categoriaId)
+    public function showLibrosByCategoriaId($categoriaId)
     {
-        $categoria2 = $this->model->getCategoria($categoriaId);
+        $ListadoLibros = $this->model->getLibrosByCategoria($categoriaId);
         // muestro la tabla 
-        $this->view->showCategoriaById($categoria2, $categoriaId);
+        $this->view->showLibrosByCategoriaId($ListadoLibros, $categoriaId);
+       
     } //repasar
 
-    public function removeLibro($id)
+    public function removeLibro($idCategoria, $idLibro)
     {
-        $this->model->deleteLibro($id);
-        header('Location: ' . BASE_URL . 'categorias');
+        $this->model->deleteLibro($idLibro);
+        header('Location: ' . BASE_URL . 'libroByCategoria/' . $idCategoria);
     }
 
     public function addLibro($categoriaId) {
@@ -113,7 +114,7 @@ class CategoriaController
             echo "error, hay un campo vacio"; // Pregunta si alguno de los campos está vacío.
         } else {
             $this->model->insertLibro($idCategoria, $titulo, $autor, $anio);
-            header('Location: ' . BASE_URL . 'categoria/' . $idCategoria);
+            header('Location: ' . BASE_URL . 'libroByCategoria/' . $idCategoria);
 
         }
     }

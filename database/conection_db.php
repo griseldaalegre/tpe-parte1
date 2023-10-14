@@ -1,7 +1,8 @@
 <?php
+require_once './database/config.php';
+
 class ConectionDb
 {
-
     private $db;
 
     function __construct()
@@ -10,8 +11,8 @@ class ConectionDb
     }
 
     function conect()
-    {
-        $this->db = new PDO('mysql:host=localhost;dbname=biblioteca;charset=utf8', 'root', '');
+    {   //crea coneccion con config.php
+        $this->db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
     }
 
     function getDb()

@@ -1,4 +1,7 @@
 <?php
+
+require_once './database/config.php';
+
 class LoginModel
 {
 
@@ -7,8 +10,8 @@ class LoginModel
 
         require_once './database/Conection_db.php';
 
-        $conexionDb = new ConectionDb(); // Crear una instancia de ConectionDb
-        $db = $conexionDb->getDb(); // Obtener la conexión
+        $conexionDb = new ConectionDb(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $db = $conexionDb->getDb(); 
 
         $query = $db->prepare('SELECT * FROM usuarios WHERE nombre_usuario = ?');
         $query->execute([$usuario]);
