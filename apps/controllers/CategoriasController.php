@@ -10,10 +10,12 @@ class CategoriasController
     
     private $model;
     private $view;
+    private $helper;
     
     public function __construct() {
         
         AuthHelper::verify();
+        $this->helper = new AuthHelper;
         $this->model = new CategoriasModel();
         $this->view = new CategoriasView();
     }
@@ -21,7 +23,8 @@ class CategoriasController
     public function showCategorias()
     {
         $categorias = $this->model->getCategorias();
-        $href = $this->view->showCategorias($categorias);
+        $rolUsuario = $this->helper->login($user);
+        $href = $this->view->showCategorias($categorias, $rolUsuario);
     }
 
     public function removeCategoria($id)

@@ -1,7 +1,7 @@
 <?php require_once './templates/Header.phtml';
 
 $href = '';
-
+$rolUsuario = '';
 ?>
 <table class="table col-6">
     <thead>
@@ -19,11 +19,17 @@ $href = '';
                     <a href="libroByCategoria/<?php echo $href ?>"><?php echo $categoria->categoria ?></a>
                 </td>
             
-                <td>
+                <td <?php
+                var_dump($rolUsuario);
+                if($rolUsuario != 0) {
+                    
+                ?>>
+                <?php
+                var_dump($rolUsuario);?>
                     <a href="editCategoria/<?= $href  ?>" type="button" class='btn btn-primary btn-sm btn-edit'>Editar</a>
 
                     <a href="eliminarCategoria/<?= $href  ?>" type="button" class='btn btn-danger btn-sm'>Eliminar</a>
-                </td>
+                </td <?php } ?>>
             </tr>
         <?php } ?>
     </tbody>

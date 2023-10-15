@@ -2,7 +2,7 @@
 
 class CategoriasView
 {
-    public function showCategorias($categorias)
+    public function showCategorias($categorias, $rolUsuario)
     {
         require_once './templates/categorias.phtml';
 

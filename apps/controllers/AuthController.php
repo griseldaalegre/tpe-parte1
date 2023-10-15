@@ -43,11 +43,9 @@ class AuthController {
                 // Usuario autenticado
                 $rolUsuario    = $_SESSION['USER_ROL'];     
                 
-                if ($rolUsuario == 1) {
-                    header('Location: ' . BASE_URL);
-                } else if ($rolUsuario == 0) {
-                    header('Location: ' . BASE_URL);
-                }
+                header('Location: ' . BASE_URL);
+                
+                return $rolUsuario;
             }
                          
         } else {
