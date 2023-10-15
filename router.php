@@ -40,7 +40,15 @@ switch ($params[0]) {
     case 'agregarLibro':
         $controller = new CategoriaController();
         $controller->addLibro($params[1]);
+        break;
+    case 'actualizarLibro':
+        $controller = new CategoriaController();
+        $controller-> updateLibro($params[1]);
         break; 
+    case 'editarLibro':
+        $controller = new CategoriaController();
+        $controller-> editLibro($params[1]);
+       break;   
     case 'eliminarCategoria':
         $controller = new CategoriasController();
         $controller->removeCategoria($params[1]);
@@ -52,6 +60,7 @@ switch ($params[0]) {
     case 'actualizarCategoria':
         $controller = new CategoriasController();
         $controller-> updateCategoria($params[1]);
+        break;
     case 'editCategoria':
         $controller = new CategoriasController();
          $controller-> editCategoria($params[1]);
@@ -64,6 +73,10 @@ switch ($params[0]) {
         $controller = new AuthController();
         $controller->showSingup();
         break;
+    case 'registro'://Muestra la carga de usuarios
+        $controller = new AuthController();
+        $controller->upUser();
+            break;    
     case 'about'://Muestra el about
         $controller = new AboutController();
         $controller->showAbout();

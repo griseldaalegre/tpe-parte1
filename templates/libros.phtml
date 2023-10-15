@@ -1,36 +1,49 @@
 <?php require_once './templates/Header.phtml'; 
 
-$href = '';
+$hrefId = '';
 
 ?>
 <h3>Listado de libro por categoria: </h3>
 <table class="table table-striped ">
     <thead>
         <tr>
-            <th class="col-sm-1">Id</th>
+
             <th class="col-sm-4">Título</th>
             <th class="col-sm-4">Autor</th>
             <th class="col-sm-4">Año</th>
-            <th class="col-sm-4">Acciones</th>
+            <?php  if($rol === 1) {
+                    ?>
+                <th class="col-sm-4">Acciones</th>
+            <?php } ?>
         </tr>
     </thead>
     <tbody>
         <?php foreach($listaLibros as $libro) { 
-          
+           $hrefId = $libro->id_libro;
+
+           
+           //var_dump($id);
             ?>
-            <tr>
-                <td><?php echo $libro->id_libro ?></td>
+            <tr class="justify-content-evently">
                 <td><?php echo $libro->titulo_libro ?></td>
                 <td><?php echo $libro->autor_libro ?></td>
                 <td><?php echo $libro->anio ?></td>
-
+                <?php  if($rol === 1) {
+                    ?>
                 <td>
+                <a href="editarLibro/<?= $hrefId  ?>" type="button" class='btn btn-primary btn-sm btn-edit'>Editar</a>
                     <a href="eliminarLibro/<?= $categoriaId ?>/<?= $libro->id_libro ?>" type="button" class="btn btn-danger btn-sm">Eliminar</a>
                 </td>
+                <?php } ?>
             </tr>
         <?php } ?>
 
     </tbody>
 </table>
-<?php require_once './templates/agregarLibro.phtml'; ?>
+
+<?php
+    if($rol === 1) {
+        require_once './templates/agregarLibro.phtml';} 
+?>
+
 <?php require_once './templates/Footer.phtml'; ?>

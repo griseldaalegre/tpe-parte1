@@ -4,6 +4,7 @@ class CategoriasView
 {
     public function showCategorias($categorias)
     {
+        $rol = $_SESSION['USER_ROL'];  
         require_once './templates/categorias.phtml';
 
         return $href;
@@ -19,7 +20,15 @@ class CategoriasView
 }
 
 class CategoriaView {//idlibros
+    
     public function showLibrosByCategoriaId($listaLibros, $categoriaId) {
+        $rol = $_SESSION['USER_ROL'];     
         require_once './templates/libros.phtml';
     }
+
+    public function showEditLibroForm($hrefIdLibro )
+    {   
+        require_once './templates/EditarLibro.phtml';
+    }
+    
 }

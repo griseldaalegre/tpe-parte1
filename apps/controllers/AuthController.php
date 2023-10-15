@@ -17,6 +17,9 @@ class AuthController {
     
     public function showLogin() {
         $this->view->showLogin();
+        // creo la claver para ver el hash y guardarlo en la base de datos!
+        
+        //echo password_hash("admin", PASSWORD_DEFAULT);
         
     }
     
@@ -41,7 +44,7 @@ class AuthController {
             
              if (isset($_SESSION['USER_ID'])) {
                 // Usuario autenticado
-                $rolUsuario    = $_SESSION['USER_ROL'];     
+                $rolUsuario = $_SESSION['USER_ROL'];     
                 
                 if ($rolUsuario == 1) {
                     header('Location: ' . BASE_URL);
@@ -60,11 +63,26 @@ class AuthController {
     }
     
     public function showSingup() {
+        echo "entro a registro";
         $this->view->showSingup();
     }
 
     public function upUser() {
 
+        $usuario = $_POST['nombre'];  
+        $password = $_POST['password'];
+
+        if (empty($usuario) || empty($password)) {
+            $this->view->showLogin('Faltan completar datos');
+            return;
+        } else {
+       // Genero el hash de la contraseña
+       $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        
+        $this->model->insertUser($usuario, $passwordHash);
+        header('Location: ' . BASE_URL . 'login');
+        echo "Registro Exitoso";
+        }
     }
 }
 

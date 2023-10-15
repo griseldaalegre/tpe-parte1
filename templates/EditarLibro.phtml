@@ -1,0 +1,19 @@
+<?php require_once './templates/Header.phtml'; 
+var_dump($hrefIdLibro);?>
+<form action="actualizarLibro/<?= $hrefIdLibro   ?>" method="GET" class="form-categoria">
+
+    <div>
+        <label for="editarLibro/<?= $id  ?>">Titulo</label>
+        <input class="form-control form-control-sm" name="titulo" type="text" value="<?php echo $hrefIdLibro; ?>">
+
+        <label for="editarLibro/<?= $id  ?>">Autor</label>
+        <input class="form-control form-control-sm" name="autor" type="text" placeholder="Autor">
+
+        <label for="editarLibro/<?= $id  ?>">Año</label>
+        <input class="form-control form-control-sm" name="anio" type="text" placeholder="Año">
+    </div>
+    <button type="submit" class="btn btn-secondary">Actualizar titulo</button>
+</form>
+
+
+<?php require_once './templates/Footer.phtml'; ?>

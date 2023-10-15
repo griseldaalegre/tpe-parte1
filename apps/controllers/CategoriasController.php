@@ -118,5 +118,29 @@ class CategoriaController
 
         }
     }
+
+    public function editLibro($idLibro)
+    {
+        $this->view->showEditLibroForm($idLibro);
+    }
+    
+    public function updateLibro($idLibro)
+    {  
+        $nuevoTitulo = $_GET['nuevoTitulo'];
+        $nuevoAutor = $_GET['nuevoAutor'];
+        $nuevoAnio = $_GET['nuevoAnio'];
+        
+        if (empty($nuevoTitulo) || empty($nuevoAutor) || empty($nuevoAnio)) {
+            echo "error";
+        } else {
+            $this->model->modifyLibro($idLibro, $nuevoTitulo, $nuevoAutor, $nuevoAnio);
+          
+        }
+
+        header('Location: ' . BASE_URL . 'categorias');
+
+    }
+    
+
     
 }

@@ -100,5 +100,13 @@ class CategoriaModel
         $query->execute([$categoria, $titulo, $autor, $anio]);
         return $this->db->lastInsertId();
     }
+
+    public function modifyLibro($idLibro, $nuevoTitulo, $nuevoAutor, $nuevoAnio)
+    {   
+        // nombre de mi tabla + el titulo q quiero cambiar + ? = el titulo q recibo + autor + ? = nuevo autor en mi columna id libro?
+        $query = $this->db->prepare('UPDATE libros SET titulo_libro = ?, autor_libro = ?, anio = ? WHERE id_libro = ?');
+        $query->execute([$idLibro, $nuevoTitulo, $nuevoAutor, $nuevoAnio]);
+    }
+    
     
 }

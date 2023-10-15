@@ -6,8 +6,11 @@ $href = '';
 <table class="table col-6">
     <thead>
         <tr class="justify-content-evently">
-            <th col-sm-4>Categoría</th>
-            <th col-sm-4>Acciones</th>
+            <th cass ="col-sm-4">Categoría</th>
+            <?php  if($rol === 1) {
+                    ?>
+            <th class="col-sm-4">Acciones</th>
+            <?php } ?>
         </tr>
     </thead>
     <tbody>
@@ -18,15 +21,20 @@ $href = '';
                 <td>
                     <a href="libroByCategoria/<?php echo $href ?>"><?php echo $categoria->categoria ?></a>
                 </td>
-            
+        <?php  if($rol === 1) {
+                    ?>
                 <td>
                     <a href="editCategoria/<?= $href  ?>" type="button" class='btn btn-primary btn-sm btn-edit'>Editar</a>
 
                     <a href="eliminarCategoria/<?= $href  ?>" type="button" class='btn btn-danger btn-sm'>Eliminar</a>
                 </td>
+                <?php } ?>
             </tr>
         <?php } ?>
     </tbody>
 </table>
-<?php require_once 'templates/FormCategoria.phtml' ?>
+<?php 
+    if($rol === 1) {
+        require_once 'templates/FormCategoria.phtml';} 
+        ?>
 <?php require_once 'templates/Footer.phtml' ?>
