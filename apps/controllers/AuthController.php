@@ -3,53 +3,58 @@
 require_once './apps/models/LoginModel.php';
 require_once './apps/views/LoginView.php';
 require_once './apps/helpers/AuthHelper.php';
+require_once './apps/controllers/ErrorController.php';
 
 class AuthController {
     
     private $view;
     private $model;
+    
 
     public function __construct() {
         
         $this->model = new LoginModel();
-        $this->view = new LoginView();  
+        $this->view = new LoginView();
+        
+
     }
     
     public function showLogin() {
         $this->view->showLogin();
-        
     }
     
     public function auth(){
         
-        $usuario = $_POST['usuario'];
+        $user = $_POST['user'];
         $password = $_POST['password'];
         
-        if (empty($usuario) || empty($password)) {
-            $this->view->showLogin('Faltan completar datos');
+        if (empty($user) || empty($password)) {
+            $controller = new ErrorController();
+            $controller->showErrorNonData("Datos Vacios");
             return;
         }
             
-        $user = $this->model->getLogin($usuario);
+        $userDb = $this->model->getLogin($user);
         
-        if ($user && password_verify($password, $user->clave_usuario)) {
+        if ($userDb && password_verify($password, $userDb->clave_usuario)) {
             
             
-            AuthHelper::login($user);
+            AuthHelper::login($userDb);
 
             
             
              if (isset($_SESSION['USER_ID'])) {
                 // Usuario autenticado
-                $rolUsuario    = $_SESSION['USER_ROL'];     
+                $rolUser = $_SESSION['USER_ROL'];     
                 
                 header('Location: ' . BASE_URL);
                 
-                return $rolUsuario;
+                return $rolUser;
             }
                          
         } else {
-            $this->view->showLogin('Usuario inválido');
+            $controller = new ErrorController();
+            $controller->showErrorInvalidUser("Usuario invalido");
         }
     }
     public function logOut() {
@@ -63,6 +68,21 @@ class AuthController {
 
     public function upUser() {
 
+        $user = $_POST['nombre'];  
+        $password = $_POST['password'];
+
+        if (empty($user) || empty($password)) {
+            $controller = new ErrorController();
+            $controller->showErrorNonData("Datos vacios");
+
+            return;
+        } else {
+       // Genero el hash de la contraseña
+       $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        
+        $this->model->insertUser($user, $passwordHash);
+        header('Location: ' . BASE_URL . 'login');
+        }
     }
 }
 

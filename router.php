@@ -1,6 +1,6 @@
 <?php
 require_once 'apps/controllers/HomeController.php';
-require_once 'apps/controllers/CategoriasController.php';
+require_once 'apps/controllers/CategoriesController.php';
 require_once 'apps/controllers/AuthController.php';
 require_once 'apps/controllers/AboutController.php';
 
@@ -11,12 +11,6 @@ if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
 
-// Home    ->    showHome();
-// Categorias   ->    showCategoria();
-// Categoria  -> showCategoria(); 
-// 
-
-// parsea la accion para separar accion real de parametros
 $params = explode('/', $action);
 
 switch ($params[0]) {
@@ -26,35 +20,44 @@ switch ($params[0]) {
         $controller->showHome();
         break;
     case 'categorias': //Muestra lista de categorias
-        $controller = new CategoriasController();
-        $controller->showCategorias();
+        $controller = new CategoriesController();
+        $controller->showCategories();
         break;
     case 'libroByCategoria': //Muestra lista de libros
-        $controller = new CategoriaController();
-        $controller->showLibrosByCategoriaId($params[1]);
+        $controller = new CategorieController();
+        $controller->showBooksByCategorieId($params[1]);
         break;
     case 'eliminarLibro':
-        $controller = new CategoriaController();
-        $controller->removeLibro($params[1], $params[2]);
+        $controller = new CategorieController();
+        $controller->removeBook($params[1], $params[2]);
          break; 
     case 'agregarLibro':
-        $controller = new CategoriaController();
-        $controller->addLibro($params[1]);
+        $controller = new CategorieController();
+        $controller->addBook($params[1]);
+        break;
+    case 'actualizarLibro':
+        $controller = new CategorieController();
+        $controller-> updateBook($params[1]);
         break; 
+    case 'editarLibro':
+        $controller = new CategorieController();
+        $controller-> editBook($params[1]);
+       break;   
     case 'eliminarCategoria':
-        $controller = new CategoriasController();
-        $controller->removeCategoria($params[1]);
+        $controller = new CategoriesController();
+        $controller->removeCategorie($params[1]);
         break;
     case 'agregarCategoria':
-        $controller = new CategoriasController();
-        $controller->addCategoria();
+        $controller = new CategoriesController();
+        $controller->addCategorie();
         break;
     case 'actualizarCategoria':
-        $controller = new CategoriasController();
-        $controller-> updateCategoria($params[1]);
+        $controller = new CategoriesController();
+        $controller-> updateCategorie($params[1]);
+        break;
     case 'editCategoria':
-        $controller = new CategoriasController();
-         $controller-> editCategoria($params[1]);
+        $controller = new CategoriesController();
+         $controller-> editCategorie($params[1]);
         break;    
     case 'login'://Muestra el login
         $controller = new AuthController();
@@ -64,6 +67,10 @@ switch ($params[0]) {
         $controller = new AuthController();
         $controller->showSingup();
         break;
+    case 'registro'://Muestra la carga de usuarios
+        $controller = new AuthController();
+        $controller->upUser();
+            break;    
     case 'about'://Muestra el about
         $controller = new AboutController();
         $controller->showAbout();
@@ -75,7 +82,23 @@ switch ($params[0]) {
     case 'logOut'://Deslogea a los usuarios
         $controller = new AuthController();
         $controller->logOut();
-        break;   
+        break;
+    case 'error':
+        $controller = new ErrorController();
+        $controller->showErrorInvalidUser($error);
+        break;
+    case 'error':
+        $controller = new ErrorController();
+        $controller->showErrorNonData($error);
+        break;
+    case 'error':
+        $controller = new ErrorController();
+        $controller->showErrorNonDataCat($error, $model);
+        break;
+    case 'error':
+        $controller = new ErrorController();
+        $controller->showErrorInsert($error);
+        break;                       
     default: 
         echo "404 Page Not Found";
         break;

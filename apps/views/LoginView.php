@@ -3,15 +3,12 @@
 class LoginView {
    
   public function showLogin($error = null) {
-    require_once './templates/login.phtml';
+    require_once './templates/Login.phtml';
     
   }
 
   public function showSingup(){
-    require_once './templates/alta.phtml';
+    require_once './templates/Charge.phtml';
   }
 
-  public function showError($error) {
-    require 'templates/error.phtml';
-  }
 }

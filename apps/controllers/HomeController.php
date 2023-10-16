@@ -11,10 +11,7 @@ class HomeController
     public function __construct() {
 
         AuthHelper::verify();
-        $this->view = new HomeView();
-        var_dump($_SESSION['USER_ROL']);     
-        var_dump($_SESSION['USER_NOMBRE']);
-        var_dump($_SESSION['USER_ID']);      
+        $this->view = new HomeView();   
     }
 
     public function showHome()

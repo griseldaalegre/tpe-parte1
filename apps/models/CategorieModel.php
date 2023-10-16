@@ -2,7 +2,7 @@
 
 require_once './database/config.php';
 
-class CategoriasModel
+class CategoriesModel
 {
     private $db;
     
@@ -14,54 +14,54 @@ class CategoriasModel
         $this->db = $conexionDb->getDb(); 
     } 
 
-    function getCategorias()
+    function getCategories()
     {
         
         $query = $this->db->prepare('SELECT * FROM categorias');
         $query->execute();
 
         // $categorias es un arreglo de categorías
-        $categorias = $query->fetchAll(PDO::FETCH_OBJ);
+        $categories = $query->fetchAll(PDO::FETCH_OBJ);
 
-        return $categorias;
+        return $categories;
     }
 
-    function deleteCategoria($idCategoria)
+    function deleteCategoria($idCategorie)
     {
        
         $query = $this->db->prepare('DELETE FROM categorias WHERE id_categoria = ?');
-        $query->execute([$idCategoria]);
+        $query->execute([$idCategorie]);
     }
 
-    function insertCategoria($categoria)
+    function insertCategorie($categorie)
     {
         $query = $this->db->prepare('INSERT INTO categorias (categoria) VALUES(?)');
-        $query->execute([$categoria]);
+        $query->execute([$categorie]);
         return $this->db->lastInsertId();
     }
 
-    public function getCategoriaById($id)
+    public function getCategorieById($id)
     {
     $query = $this->db->prepare('SELECT * FROM categorias WHERE id_categoria = ?');
     $query->execute([$id]);
 
     // Obtener la categoría como un objeto
-    $categoria = $query->fetch(PDO::FETCH_OBJ);
+    $categorie = $query->fetch(PDO::FETCH_OBJ);
 
-    return $categoria;
+    return $categorie;
     }
 
-    public function modifyCategoria($categoria, $id)
+    public function modifyCategorie($categorie, $id)
     {
         $query = $this->db->prepare('UPDATE categorias SET categoria = ? WHERE id_categoria = ?');
-        $query->execute([$categoria, $id]);
+        $query->execute([$categorie, $id]);
   
     }
     
 }
 
 
-class CategoriaModel
+class CategorieModel
 {
    private $db;
    
@@ -73,32 +73,40 @@ class CategoriaModel
         $this->db = $conexionDb->getDb(); 
     } 
 
-    function getLibrosByCategoria($href)
+    function getBooksByCategorie($href)
     {
 
         $query = $this->db->prepare('SELECT * FROM libros WHERE id_categoria = ?');
         $query->execute([$href]);
 
         // $categorias es un arreglo de categorias
-        $categoria2 = $query->fetchAll(PDO::FETCH_OBJ);
+        $categorie2 = $query->fetchAll(PDO::FETCH_OBJ);
 
-        return $categoria2;
+        return $categorie2;
     }
 
-    function deleteLibro($idLibro)
+    function deleteBook($idBook)
     {
       
         $query = $this->db->prepare('DELETE FROM libros WHERE id_libro = ?');
-        $query->execute([$idLibro]);
+        $query->execute([$idBook]);
     }
 
-    function insertLibro($categoria, $titulo, $autor, $anio)
+    function insertBook($id_Categorie, $titulo_libro, $autor_libro, $anio)
     {
        // Obtener la conexión y asignarla a $this->db
         $query = $this->db->prepare('INSERT INTO libros (id_categoria, titulo_libro, autor_libro, anio) VALUES (?, ?, ?, ?)');
         
-        $query->execute([$categoria, $titulo, $autor, $anio]);
+        $query->execute([$id_Categorie, $titulo_libro, $autor_libro, $anio]);
         return $this->db->lastInsertId();
     }
+
+    public function modifyBook($idLibro, $newTitle, $newAuthor, $newYear)
+    {   
+    
+        $query = $this->db->prepare('UPDATE libros SET titulo_libro = ?, autor_libro = ?, anio = ? WHERE id_libro = ?');
+        $query->execute([$newTitle, $newAuthor, $newYear, $idLibro]);
+    }
+    
     
 }
