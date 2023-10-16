@@ -1,5 +1,6 @@
 <?php
 
+
 require_once './apps/models/LoginModel.php';
 require_once './apps/views/LoginView.php';
 require_once './apps/helpers/AuthHelper.php';
@@ -23,8 +24,8 @@ class AuthController {
         $this->view->showLogin();
     }
     
-    public function auth(){
-        
+    public function auth(){  
+ 
         $user = $_POST['user'];
         $password = $_POST['password'];
         
