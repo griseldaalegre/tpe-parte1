@@ -3,6 +3,6 @@ class AboutView
 {
     public function showAbout($error = null)
     {
-        require './templates/About.phtml';
+        require_once './templates/About.phtml';
     }
 }

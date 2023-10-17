@@ -26,12 +26,13 @@ class CategoriesModel
         return $categories;
     }
 
-    function deleteCategoria($idCategorie, $error = null)
+    function deleteCategoria($idCategorie)
     {
         $query = $this->db->prepare('DELETE FROM categorias WHERE id_categoria = ?');
         $query->execute([$idCategorie]);
+        
     }
-
+    
     function insertCategorie($categorie)
     {
         $query = $this->db->prepare('INSERT INTO categorias (categoria) VALUES(?)');

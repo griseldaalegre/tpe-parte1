@@ -35,14 +35,19 @@ class CategoriesController
             header('Location: ' . BASE_URL . 'categorias');
         } else {
             try {
+
                 $this->model->deleteCategoria($id);
-                header('Location: ' . BASE_URL . 'categorias');
-            } catch (PDOException $e){
+                 // Eliminación exitosa, redirige a la página de categorías
+                 header('Location: ' . BASE_URL . 'categorias');
+            } catch (\Throwable $th) {
+                $categoria =  $this->model->getCategorieById($id);
                 $controller = new ErrorController();
-                $controller->showErrorDeleteCat("Categoria con libros, primero limpiar categoria.", $this->model);
+                $controller->showErrorDelete("La Categoria: **".$categoria->categoria."** contiene libros, primero debe vaciar.", $this->model );
             }
+
         }
     }
+    
     public function addCategorie()
     {
         $categorie = $_GET['categorie'];
@@ -63,7 +68,6 @@ class CategoriesController
 
     public function editCategorie($id)
     {
-
         $categorie = $this->model->getCategorieById($id);
         $this->view->showEditCategorieForm($categorie, $id);
     }
@@ -87,13 +91,11 @@ class CategoriesController
 
 class CategorieController
 {
-    //privates
     private $model;
     private $view;
 
     public function __construct()
     {
-
         AuthHelper::verify();
 
         $this->model = new CategorieModel();
@@ -102,10 +104,9 @@ class CategorieController
 
     public function showBooksByCategorieId($categorieId)
     {
-        $ListBooks = $this->model->getBooksByCategorie($categorieId);
-        // muestro la tabla 
+        $ListBooks = $this->model->getBooksByCategorie($categorieId);  
         $this->view->showBooksByCategorieId($ListBooks, $categorieId);
-    } //repasar
+    } 
 
     public function removeBook($idCategorie, $idBook)
     {
@@ -123,8 +124,8 @@ class CategorieController
 
         if (empty($id_Categorie) || empty($titulo_libro) || empty($autor_libro) || empty($anio)) {
             $controller = new ErrorController();
-            //$controller->showErrorAddBook("Formulario incompleto"); 
-            var_dump($id_Categorie, $titulo_libro, $autor_libro, $anio); // Pregunta si alguno de los campos está vacío.
+            
+            var_dump($id_Categorie, $titulo_libro, $autor_libro, $anio); 
         } else {
             $this->model->insertBook($id_Categorie, $titulo_libro, $autor_libro, $anio);
             header('Location: ' . BASE_URL . 'libroByCategoria/' . $id_Categorie);

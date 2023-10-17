@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2023 a las 08:56:41
+-- Tiempo de generación: 17-10-2023 a las 19:40:30
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -37,7 +37,7 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id_categoria`, `categoria`) VALUES
-(1, 'Adventure 2'),
+(1, 'Adventure '),
 (2, 'Children'),
 (3, 'Drama'),
 (4, 'Fantasy'),
@@ -45,13 +45,8 @@ INSERT INTO `categorias` (`id_categoria`, `categoria`) VALUES
 (6, 'Romance'),
 (7, 'Mystery'),
 (8, 'Humor'),
-(9, 'edid'),
-(54, 'hdfsf'),
-(55, 'hora'),
-(59, 'Terror'),
-(62, 'ttryry'),
-(65, 'NUEVA'),
-(67, 'ñ');
+(9, 'Fantasy II'),
+(59, 'Terror');
 
 -- --------------------------------------------------------
 
@@ -72,16 +67,7 @@ CREATE TABLE `libros` (
 --
 
 INSERT INTO `libros` (`id_libro`, `titulo_libro`, `autor_libro`, `id_categoria`, `anio`) VALUES
-(7, 'Choice Of The Prison', 'Samuel Lockhart', 1, 2014),
-(8, 'Castle Of The Solstice', 'Eleanor Winterfell', 1, 1943),
-(9, 'Answering The Dungeons', 'Victor Stone', 1, 1915),
-(10, 'Hunted By The Apocalypse', 'Gabriel Darkwood', 1, 1906),
-(11, 'Butterfly Without Duty', 'Serena Monarch', 1, 1986),
-(12, 'Rat Of The Curse', 'Tobias Vermin', 1, 1972),
-(13, 'Cats Of The Stars', 'Luna Stardust', 1, 1904),
-(14, 'Warriors Without Time', 'Julian Tempus', 1, 2017),
-(15, 'Humans And Friends', 'Sophia Kinship', 1, 1901),
-(16, 'Armies And Boys', 'William Battle', 1, 1967),
+(16, 'poooo', 'asasdada', 1, 2023),
 (17, 'Faith Without A Home', 'Grace Wanderer', 1, 1909),
 (18, 'Moon With Honor', 'Diana Moonshadow', 1, 1991),
 (21, 'Man Of Fantasia', 'Leo Dreamweaver', 2, 1992),
@@ -264,15 +250,7 @@ INSERT INTO `libros` (`id_libro`, `titulo_libro`, `autor_libro`, `id_categoria`,
 (198, 'Fire Program', 'Foolish Helper', 8, 2009),
 (199, 'Elegance Of My Design', 'Laughter Assistant', 8, 1910),
 (200, 'Impressed By Fire', 'Comedic Companion', 8, 1904),
-(201, 'Human Of The Ocean', 'Emotion Explorer', 9, 1917),
-(202, '1984', 'Emotion Scientist', 9, 1949),
-(203, 'Pilots Of The Stars', 'Futuristic Flyer', 9, 1960),
-(204, 'Officers Of Earth', 'Space Explorer', 9, 1954),
-(205, 'Veterans And Hunters', 'Galaxy Tracker', 9, 2010),
 (206, 'Clones And Androids', 'Robot Developer', 9, 1952),
-(207, 'Nation Of Nowhere', 'Nomadic Traveler', 9, 1910),
-(208, 'Monument Of Honor', 'Honored Statue', 9, 1957),
-(209, 'Abandoned On Robotic', 'Control Robo Abandonator', 9, 1902),
 (210, 'Life With Stardust', 'Stardust Wanderer', 9, 1995),
 (211, 'Creator In The Portal', 'Portal Creator', 9, 1962),
 (212, 'Invader On Mars', 'Martian Invader', 9, 1971),
@@ -281,7 +259,6 @@ INSERT INTO `libros` (`id_libro`, `titulo_libro`, `autor_libro`, `id_categoria`,
 (215, 'Creators And Men', 'Creators Friend', 9, 2007),
 (216, 'Boys And Visitors', 'Friendly Visitor', 9, 2014),
 (217, 'Moon Of Exploration', 'Luna Explorer', 9, 1999),
-(218, 'Doom Of The New Order', 'New Order Seeker', 9, 1971),
 (219, 'Created By Outer Space', 'Outer Space Creator', 9, 1969),
 (220, 'Demand For The Legends', 'Legendary Seeker', 9, 1937),
 (227, 'El cuervo', 'Edgar', 9, 1212),
@@ -293,11 +270,7 @@ INSERT INTO `libros` (`id_libro`, `titulo_libro`, `autor_libro`, `id_categoria`,
 (233, 'El cuervito', 'Edgarcito', 8, 5000),
 (236, 'Dumbo', 'Disney', 2, 1900),
 (244, 'El cuervito', 'Edgarcito', 59, 2000),
-(245, 'El cuervito', 'Edgarcito', 59, 2000),
-(253, 'El cuervo', 'Edgar', 55, 5000),
-(254, 'El cuervito', 'Edgar', 55, 1900),
-(257, 'El cuervo', 'Edgarcito', 54, 2000),
-(259, 'El cuervo', 'Ed', 67, 5000);
+(245, 'El cuervito', 'Edgarcito', 59, 2000);
 
 -- --------------------------------------------------------
 
@@ -320,7 +293,10 @@ INSERT INTO `usuarios` (`id_usuarios`, `nombre_usuario`, `clave_usuario`, `rol`)
 (3, 'webadmin', '$2y$10$3LOxgaLuvwoqIOemB6fikue/8Qch4SORrj0GaVfQcqlAIs984298a', 1),
 (4, 'webuser', '$2y$10$Ghf8M42/opvlgR/1sKgqu.XZiF.QKI0CeyiMesshXC4oocFBOPXUS', 0),
 (5, 'Pepito', '$2y$10$FGt1P3oU5SGgF1HVNbzXLeiCvWud70b00CAymjrFAMg5gVieS9nUa', 0),
-(6, 'Pepito', '$2y$10$UKfJqynz6sTTNcyVpXJbAuG6lSh7m.pkwUIpVAQeSXlt4gN2iIY9.', 0);
+(6, 'Pepito', '$2y$10$UKfJqynz6sTTNcyVpXJbAuG6lSh7m.pkwUIpVAQeSXlt4gN2iIY9.', 0),
+(7, 'Pepito', '$2y$10$s6RdopxCnvoG57jSJ6MTK.3rjo7q/lbdmNmq7MdDMH7q7LReH98ka', 0),
+(8, 'Gisele', '$2y$10$wpAzk/62UYWXG5GHAAjb7eYTbUUDotk.CfvBu34RHQISC9W07QfJe', 0),
+(9, 'Pepe', '$2y$10$z6Ppxr/pb.6ux0ycF4qXd.SVLaptPMTuUD6rnWDze8/ttDJIx2f0i', 0);
 
 --
 -- Índices para tablas volcadas
@@ -359,13 +335,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=260;
+  MODIFY `id_libro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=261;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_usuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas

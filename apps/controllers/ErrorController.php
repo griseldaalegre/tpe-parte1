@@ -24,16 +24,29 @@ class ErrorController
 
     require_once './templates/Login.phtml';
   }
-  public function showErrorDeleteCat($error, $model)
+  public function showErrorDelete($error, $model)
   {
-    $categories = $model->deleteCategoria();
+    $categories = $model->getCategories();
     $view = new CategoriesView();
     $view->showCategories($categories, $error);
   }
-  public function showErrorNonUser($error)
+  public function showErrorNonUser($error, $page)
   {
 
+    if($page == 'about'){
+      $view = new AboutView();
+      $view->showAbout($error);
+    }
+    else{
+      $view = new HomeView();
+      $view->showHome($error);
+    }
+
+}
+
+  public function showError404($error)
+  {
     $view = new HomeView();
     $view->showHome($error);
-  }
+}
 }
