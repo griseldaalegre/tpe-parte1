@@ -1,3 +1,4 @@
+
 /* Estilo para el formulario */
 .login {
   display: flex;
@@ -39,7 +40,7 @@ button[type="submit"] {
   cursor: pointer;
 }
 
-.form-categoria  button[type="submit"]{
+.form-categoria button[type="submit"] {
   background-color: #007bff;
   color: #fff;
   padding: 10px 10px;
@@ -56,7 +57,7 @@ a {
 }
 
 /* Estilo para el contenedor de los enlaces */
-div > div {
+div>div {
   margin-top: 1%;
 }
 
@@ -95,7 +96,7 @@ footer {
 }
 
 .form-categoria {
-  background-color:#ffffff;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -105,7 +106,7 @@ footer {
   width: 100%;
 }
 
-.container-categoria-button{
+.container-categoria-button {
   display: flex;
   justify-content: space-evenly;
 
@@ -141,6 +142,26 @@ li {
   line-height: 1.6;
   color: #555;
 }
-.about{
+
+.about {
   margin: 2%;
+}
+
+
+.carousel-inner { 
+  height: 250px;
+}
+
+.carousel-item > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  height: 40rem;
+  margin: 0 auto;
+}
+
+.logout{
+  width: 200px;
 }

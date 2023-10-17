@@ -30,19 +30,19 @@ switch ($params[0]) {
     case 'eliminarLibro':
         $controller = new CategorieController();
         $controller->removeBook($params[1], $params[2]);
-         break; 
+        break;
     case 'agregarLibro':
         $controller = new CategorieController();
         $controller->addBook($params[1]);
         break;
     case 'actualizarLibro':
         $controller = new CategorieController();
-        $controller-> updateBook($params[1]);
-        break; 
+        $controller->updateBook($params[1]);
+        break;
     case 'editarLibro':
         $controller = new CategorieController();
-        $controller-> editBook($params[1]);
-       break;   
+        $controller->editBook($params[1]);
+        break;
     case 'eliminarCategoria':
         $controller = new CategoriesController();
         $controller->removeCategorie($params[1]);
@@ -53,33 +53,33 @@ switch ($params[0]) {
         break;
     case 'actualizarCategoria':
         $controller = new CategoriesController();
-        $controller-> updateCategorie($params[1]);
+        $controller->updateCategorie($params[1]);
         break;
     case 'editCategoria':
         $controller = new CategoriesController();
-         $controller-> editCategorie($params[1]);
-        break;    
-    case 'login'://Muestra el login
+        $controller->editCategorie($params[1]);
+        break;
+    case 'login': //Muestra el login
         $controller = new AuthController();
         $controller->showLogin();
         break;
-    case 'singup'://Muestra la carga de usuarios
+    case 'singup': //Muestra la carga de usuarios
         $controller = new AuthController();
         $controller->showSingup();
         break;
-    case 'registro'://Muestra la carga de usuarios
+    case 'registro': //Muestra la carga de usuarios
         $controller = new AuthController();
         $controller->upUser();
-            break;    
-    case 'about'://Muestra el about
+        break;
+    case 'about': //Muestra el about
         $controller = new AboutController();
         $controller->showAbout();
-        break;   
-    case 'auth'://Autentifica los usuarios
+        break;
+    case 'auth': //Autentifica los usuarios
         $controller = new AuthController();
         $controller->auth();
         break;
-    case 'logOut'://Deslogea a los usuarios
+    case 'logOut': //Deslogea a los usuarios
         $controller = new AuthController();
         $controller->logOut();
         break;
@@ -87,7 +87,7 @@ switch ($params[0]) {
         $controller = new ErrorController();
         $controller->showErrorInvalidUser($error);
         break;
-    case 'error':
+   /* case 'error':
         $controller = new ErrorController();
         $controller->showErrorNonData($error);
         break;
@@ -98,8 +98,8 @@ switch ($params[0]) {
     case 'error':
         $controller = new ErrorController();
         $controller->showErrorInsert($error);
-        break;                       
-    default: 
+        break;*/
+    default:
         echo "404 Page Not Found";
         break;
 }
