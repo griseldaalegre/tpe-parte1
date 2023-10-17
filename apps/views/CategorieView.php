@@ -25,7 +25,7 @@ class CategorieView {
         require_once './templates/Books.phtml';
     }
 
-    public function showEditBookForm($idBook)
+    public function showEditBookForm($idBook, $error = null)
     {   
         require_once './templates/EditBook.phtml';
     }

@@ -11,13 +11,19 @@ class ErrorController {
     require_once './templates/Login.phtml';
   }
   public function showErrorNonDataCat($error, $model) {
-    $categories = $model->getCategories(); // Utiliza el modelo pasado como argumento
+    $categories = $model->getCategories(); 
     $view = new CategoriesView();
     $view->showCategories($categories, $error);
   }
   public function showErrorInsert($error) {
     
     require_once './templates/Login.phtml';
+  }
+  public function showErrorDelete($error, $model) {
+    $categories = $model->deleteCategoria(); 
+    $view = new CategoriesView();
+    $view->showCategories($categories, $error);
+   
   }
 
 

@@ -26,7 +26,7 @@ class CategoriesModel
         return $categories;
     }
 
-    function deleteCategoria($idCategorie)
+    function deleteCategoria($idCategorie, $error = null)
     {
        
         $query = $this->db->prepare('DELETE FROM categorias WHERE id_categoria = ?');
@@ -101,11 +101,11 @@ class CategorieModel
         return $this->db->lastInsertId();
     }
 
-    public function modifyBook($idLibro, $newTitle, $newAuthor, $newYear)
+    public function modifyBook($idBook, $newTitle, $newAuthor, $newYear)
     {   
     
         $query = $this->db->prepare('UPDATE libros SET titulo_libro = ?, autor_libro = ?, anio = ? WHERE id_libro = ?');
-        $query->execute([$newTitle, $newAuthor, $newYear, $idLibro]);
+        $query->execute([$newTitle, $newAuthor, $newYear, $idBook]);
     }
     
     

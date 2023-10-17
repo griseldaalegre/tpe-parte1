@@ -36,6 +36,8 @@ class CategoriesController
         } else {
             $this->model->deleteCategoria($id);
             header('Location: ' . BASE_URL . 'categorias');
+            $controller = new ErrorController();
+            $controller->showErrorDelete("Categoria con libros, primero vacear.", $this->model);
         }
     }
     public function addCategorie()
@@ -124,7 +126,8 @@ class CategorieController
     
     
         if (empty($id_Categorie) || empty($titulo_libro) || empty($autor_libro) || empty($anio)) {
-            echo "error, hay un campo vacio"; 
+            $controller = new ErrorController();
+            //$controller->showErrorAddBook("Formulario incompleto"); 
             var_dump($id_Categorie, $titulo_libro, $autor_libro, $anio);// Pregunta si alguno de los campos está vacío.
         } else {
             $this->model->insertBook($id_Categorie, $titulo_libro, $autor_libro, $anio);
@@ -145,13 +148,13 @@ class CategorieController
         $newYear =   $_POST['nuevoAnio'];
         
         if (empty($newTitle) || empty($newAuthor) || empty($newYear)) {
-            echo "error";
+            
         } else {
             $this->model->modifyBook($idBook, $newTitle, $newAuthor, $newYear);
-          
+            header('Location: ' . BASE_URL . 'categorias');
         }
-        var_dump($newTitle, $newAuthor, $newYear, $idBook);
-        header('Location: ' . BASE_URL . 'categorias');
+        
+        
 
     }
     

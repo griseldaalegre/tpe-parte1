@@ -3,13 +3,15 @@
 $hrefId = '';
 
 ?>
-<h3>Listado de libro por categoria: </h3>
+<h4>Listado de libro por categoria: </h4>
 <table class="table table-striped ">
     <thead>
         <tr>
-
+            
             <th class="col-sm-4">Título</th>
+            
             <th class="col-sm-4">Autor</th>
+            
             <th class="col-sm-4">Año</th>
             <?php  if($rol === 1) {
                     ?>
@@ -20,9 +22,7 @@ $hrefId = '';
     <tbody>
         <?php foreach($listBooks as $book) { 
            $hrefId = $book->id_libro;
-
            
-           //var_dump($id);
             ?>
             <tr class="justify-content-evently">
                 <td><?php echo $book->titulo_libro ?></td>
@@ -31,7 +31,8 @@ $hrefId = '';
                 <?php  if($rol === 1) {
                     ?>
                 <td>
-                <a href="editarLibro/<?= $hrefId  ?>" type="button" class='btn btn-primary btn-sm btn-edit'>Editar</a>
+                    <a href="editarLibro/<?= $hrefId  ?>" type="button" class='btn btn-primary btn-sm btn-edit'>Editar</a>
+                    
                     <a href="eliminarLibro/<?= $categorieId ?>/<?= $book->id_libro ?>" type="button" class="btn btn-danger btn-sm">Eliminar</a>
                 </td>
                 <?php } ?>
