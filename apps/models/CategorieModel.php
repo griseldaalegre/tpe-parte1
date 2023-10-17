@@ -28,7 +28,6 @@ class CategoriesModel
 
     function deleteCategoria($idCategorie, $error = null)
     {
-
         $query = $this->db->prepare('DELETE FROM categorias WHERE id_categoria = ?');
         $query->execute([$idCategorie]);
     }

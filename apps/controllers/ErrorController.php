@@ -24,7 +24,7 @@ class ErrorController
 
     require_once './templates/Login.phtml';
   }
-  public function showErrorDelete($error, $model)
+  public function showErrorDeleteCat($error, $model)
   {
     $categories = $model->deleteCategoria();
     $view = new CategoriesView();

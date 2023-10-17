@@ -34,10 +34,13 @@ class CategoriesController
         if (empty($id)) {
             header('Location: ' . BASE_URL . 'categorias');
         } else {
-            $this->model->deleteCategoria($id);
-            header('Location: ' . BASE_URL . 'categorias');
-            $controller = new ErrorController();
-            $controller->showErrorDelete("Categoria con libros, primero vacear.", $this->model);
+            try {
+                $this->model->deleteCategoria($id);
+                header('Location: ' . BASE_URL . 'categorias');
+            } catch (PDOException $e){
+                $controller = new ErrorController();
+                $controller->showErrorDeleteCat("Categoria con libros, primero limpiar categoria.", $this->model);
+            }
         }
     }
     public function addCategorie()
