@@ -87,7 +87,7 @@ switch ($params[0]) {
         $controller = new ErrorController();
         $controller->showErrorInvalidUser($error);
         break;
-    case 'error':
+   /* case 'error':
         $controller = new ErrorController();
         $controller->showErrorNonData($error);
         break;
@@ -98,7 +98,7 @@ switch ($params[0]) {
     case 'error':
         $controller = new ErrorController();
         $controller->showErrorInsert($error);
-        break;
+        break;*/
     default:
         echo "404 Page Not Found";
         break;

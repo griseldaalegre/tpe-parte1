@@ -34,12 +34,27 @@ class CategoriesController
         if (empty($id)) {
             header('Location: ' . BASE_URL . 'categorias');
         } else {
-            $this->model->deleteCategoria($id);
-            header('Location: ' . BASE_URL . 'categorias');
-            $controller = new ErrorController();
-            $controller->showErrorDelete("Categoria con libros, primero vacear.", $this->model);
+            try {
+
+                $this->model->deleteCategoria($id);
+                 // Eliminación exitosa, redirige a la página de categorías
+                 header('Location: ' . BASE_URL . 'categorias');
+            } catch (\Throwable $th) {
+                $categoria =  $this->model->getCategorieById($id);
+                $controller = new ErrorController();
+                $controller->showErrorDelete("La Categoria: **".$categoria->categoria."** contiene libros, primero debe vaciar.", $this->model );
+            }
+            /*if ($this->model->deleteCategoria($id)) {
+                // Eliminación exitosa, redirige a la página de categorías
+                header('Location: ' . BASE_URL . 'categorias');
+               
+            } else {
+                // Error al eliminar, muestra un mensaje de error
+                $error = $this->model->deleteCategoria($id);
+            }// terianr*/
         }
     }
+    
     public function addCategorie()
     {
         $categorie = $_GET['categorie'];

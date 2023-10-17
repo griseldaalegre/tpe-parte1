@@ -26,7 +26,7 @@ class ErrorController
   }
   public function showErrorDelete($error, $model)
   {
-    $categories = $model->deleteCategoria();
+    $categories = $model->getCategories();
     $view = new CategoriesView();
     $view->showCategories($categories, $error);
   }
@@ -35,5 +35,11 @@ class ErrorController
 
     $view = new HomeView();
     $view->showHome($error);
+  }
+
+  public function showError404($error)
+  {
+    $view = new HomeView();
+    $view->error($error);
   }
 }
