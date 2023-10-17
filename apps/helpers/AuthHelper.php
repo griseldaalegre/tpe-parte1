@@ -31,7 +31,7 @@ class AuthHelper
         AuthHelper::init();
         if (!isset($_SESSION['USER_ID'])) {
             $controller = new ErrorController();
-            $controller->showErrorNonUser('Para acceder al contenido de la biblioteca por favor inicia secion',$page);
+            $controller->showErrorNonUser('Para acceder al contenido de la biblioteca por favor inicia sesión',$page);
         }
     }
 }

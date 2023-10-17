@@ -59,47 +59,32 @@ switch ($params[0]) {
         $controller = new CategoriesController();
         $controller->editCategorie($params[1]);
         break;
-    case 'login': //Muestra el login
+    case 'login':
         $controller = new AuthController();
         $controller->showLogin();
         break;
-    case 'singup': //Muestra la carga de usuarios
+    case 'singup': 
         $controller = new AuthController();
         $controller->showSingup();
         break;
-    case 'registro': //Muestra la carga de usuarios
+    case 'registro': 
         $controller = new AuthController();
         $controller->upUser();
         break;
-    case 'about': //Muestra el about
+    case 'about': 
         $controller = new AboutController();
         $controller->showAbout();
         break;
-    case 'auth': //Autentifica los usuarios
+    case 'auth': 
         $controller = new AuthController();
         $controller->auth();
         break;
-    case 'logOut': //Deslogea a los usuarios
+    case 'logOut': 
         $controller = new AuthController();
         $controller->logOut();
         break;
-    case 'error':
-        $controller = new ErrorController();
-        $controller->showErrorInvalidUser($error);
-        break;
-   /* case 'error':
-        $controller = new ErrorController();
-        $controller->showErrorNonData($error);
-        break;
-    case 'error':
-        $controller = new ErrorController();
-        $controller->showErrorNonDataCat($error, $model);
-        break;
-    case 'error':
-        $controller = new ErrorController();
-        $controller->showErrorInsert($error);
-        break;*/
     default:
-        echo "404 Page Not Found";
+    $controller = new ErrorController();
+    $controller->showError404($error);
         break;
 }

@@ -2,7 +2,6 @@
 
 class LoginView
 {
-
   public function showLogin($error = null)
   {
     require_once './templates/Login.phtml';

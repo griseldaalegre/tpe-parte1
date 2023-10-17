@@ -1,5 +1,3 @@
-
-/* Estilo para el formulario */
 .login {
   display: flex;
   flex-direction: column;
@@ -15,12 +13,10 @@ form {
   border-radius: 2%;
 }
 
-/* Estilo para las etiquetas */
 label {
   display: block;
   margin-bottom: 3%;
 }
-
 
 nput[type="text"],
 input[type="password"] {
@@ -49,14 +45,14 @@ button[type="submit"] {
   cursor: pointer;
 }
 
-/* Estilo para los enlaces "Sign up" y "Forgot password?" */
+
 a {
   text-decoration: none;
   margin-right: 2%;
   color: #007bff;
 }
 
-/* Estilo para el contenedor de los enlaces */
+
 div>div {
   margin-top: 1%;
 }
@@ -147,7 +143,6 @@ li {
   margin: 2%;
 }
 
-
 .carousel-inner { 
   height: 250px;
 }
@@ -164,4 +159,8 @@ li {
 
 .logout{
   width: 200px;
+}
+
+.td-btn{ 
+  display: flex;
 }

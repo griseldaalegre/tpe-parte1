@@ -42,11 +42,11 @@ class ErrorController
       $view->showHome($error);
     }
 
-  }
+}
 
   public function showError404($error)
   {
     $view = new HomeView();
-    $view->error($error);
-  }
+    $view->showHome($error);
+}
 }

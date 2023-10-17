@@ -11,7 +11,7 @@ class ConectionDb
     }
 
     function conect()
-    {   //crea coneccion con config.php
+    {   //creo coneccion con config.php
         $this->db = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
     }
 
