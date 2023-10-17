@@ -30,11 +30,18 @@ class ErrorController
     $view = new CategoriesView();
     $view->showCategories($categories, $error);
   }
-  public function showErrorNonUser($error)
+  public function showErrorNonUser($error, $page)
   {
 
-    $view = new HomeView();
-    $view->showHome($error);
+    if($page == 'about'){
+      $view = new AboutView();
+      $view->showAbout($error);
+    }
+    else{
+      $view = new HomeView();
+      $view->showHome($error);
+    }
+
   }
 
   public function showError404($error)
