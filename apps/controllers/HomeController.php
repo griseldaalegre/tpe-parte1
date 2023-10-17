@@ -5,18 +5,17 @@ require_once './apps/helpers/AuthHelper.php';
 
 class HomeController
 {
-    //private $model;
+
     private $view;
 
-    public function __construct() {
-
+    public function __construct()
+    {
         AuthHelper::verify();
-        $this->view = new HomeView();   
+        $this->view = new HomeView();
     }
 
     public function showHome()
     {
-
         $this->view->showHome();
     }
 }

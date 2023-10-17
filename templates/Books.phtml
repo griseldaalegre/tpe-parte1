@@ -1,4 +1,4 @@
-<?php require_once './templates/Header.phtml'; 
+<?php require_once './templates/Header.phtml';
 
 $hrefId = '';
 
@@ -7,34 +7,34 @@ $hrefId = '';
 <table class="table table-striped ">
     <thead>
         <tr>
-            
+
             <th class="col-sm-4">Título</th>
-            
+
             <th class="col-sm-4">Autor</th>
-            
+
             <th class="col-sm-4">Año</th>
-            <?php  if($rol === 1) {
-                    ?>
+            <?php if ($rol === 1) {
+            ?>
                 <th class="col-sm-4">Acciones</th>
             <?php } ?>
         </tr>
     </thead>
     <tbody>
-        <?php foreach($listBooks as $book) { 
-           $hrefId = $book->id_libro;
-           
-            ?>
+        <?php foreach ($listBooks as $book) {
+            $hrefId = $book->id_libro;
+
+        ?>
             <tr class="justify-content-evently">
                 <td><?php echo $book->titulo_libro ?></td>
                 <td><?php echo $book->autor_libro ?></td>
                 <td><?php echo $book->anio ?></td>
-                <?php  if($rol === 1) {
-                    ?>
-                <td>
-                    <a href="editarLibro/<?= $hrefId  ?>" type="button" class='btn btn-primary btn-sm btn-edit'>Editar</a>
-                    
-                    <a href="eliminarLibro/<?= $categorieId ?>/<?= $book->id_libro ?>" type="button" class="btn btn-danger btn-sm">Eliminar</a>
-                </td>
+                <?php if ($rol === 1) {
+                ?>
+                    <td>
+                        <a href="editarLibro/<?= $hrefId  ?>" type="button" class='btn btn-primary btn-sm btn-edit'>Editar</a>
+
+                        <a href="eliminarLibro/<?= $categorieId ?>/<?= $book->id_libro ?>" type="button" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
                 <?php } ?>
             </tr>
         <?php } ?>
@@ -43,8 +43,9 @@ $hrefId = '';
 </table>
 
 <?php
-    if($rol === 1) {
-        require_once './templates/AddBook.phtml';} 
+if ($rol === 1) {
+    require_once './templates/AddBook.phtml';
+}
 ?>
 
 <?php require_once './templates/Footer.phtml'; ?>

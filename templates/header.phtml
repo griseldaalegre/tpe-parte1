@@ -14,6 +14,11 @@
 
 <body>
   <header>
+    <?php if ($error) : ?>
+      <div class='alert alert-danger' role='alert'>
+        <?= $error ?>
+      </div>
+    <?php endif ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="home">BIBLIOTECA</a>
@@ -28,7 +33,7 @@
             <li class="nav-item dropdown">
               <?php if (!isset($_SESSION['USER_NAME'])) : ?>
 
-              <?php  else : ?>
+              <?php else : ?>
                 <a class="nav-link dropdown-toggle" href="categorias" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Libros
                 </a>

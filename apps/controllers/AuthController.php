@@ -6,25 +6,27 @@ require_once './apps/views/LoginView.php';
 require_once './apps/helpers/AuthHelper.php';
 require_once './apps/controllers/ErrorController.php';
 
-class AuthController {
-    
+class AuthController
+{
+
     private $view;
     private $model;
-    
 
-    public function __construct() {
-        
+
+    public function __construct()
+    {
+
         $this->model = new LoginModel();
         $this->view = new LoginView();
-        
-
     }
-    
-    public function showLogin() {
+
+    public function showLogin()
+    {
         $this->view->showLogin();
     }
-    
-    public function auth() {
+
+    public function auth()
+    {
         if (isset($_SESSION['USER_ID'])) {
             // El usuario ya está autenticado, redirige a la página principal
             header('Location: ' . BASE_URL . 'home');
@@ -52,17 +54,20 @@ class AuthController {
         }
     }
 
-    public function logOut() {
+    public function logOut()
+    {
         AuthHelper::logOut();
-       
+
         die;
     }
 
-    public function showSingup() {
+    public function showSingup()
+    {
         $this->view->showSingup();
     }
 
-    public function upUser() {
+    public function upUser()
+    {
         $user = $_POST['nombre'];
         $password = $_POST['password'];
 
@@ -80,5 +85,3 @@ class AuthController {
         }
     }
 }
-
-

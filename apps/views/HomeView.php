@@ -1,11 +1,8 @@
 <?php
-//cambiar nombre de archivo?
+
 class HomeView {
-    public function showHome() {
-        require 'templates/Header.phtml';
+    public function showHome($error = null) {
         require 'templates/Home.phtml';
-        require 'templates/Footer.phtml';
         }
 
     }
-?>

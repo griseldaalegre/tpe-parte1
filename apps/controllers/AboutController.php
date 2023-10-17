@@ -1,16 +1,21 @@
 <?php
+
 require_once './apps/views/AboutView.php';
 require_once './apps/helpers/AuthHelper.php';
 
-class AboutController {
+class AboutController
+{
+
     private $view;
 
-    public function __construct() {
+    public function __construct()
+    {
         AuthHelper::verify();
         $this->view = new AboutView();
-    } 
+    }
 
-    public function showAbout() {
+    public function showAbout()
+    {
         $this->view->showAbout();
     }
 }
