@@ -18,6 +18,8 @@ class AuthHelper {
     public static function logOut() {
         AuthHelper::init();
         session_destroy();
+        header('Location: ' . BASE_URL);
+        die;
     }
     
     public static function verify() {
