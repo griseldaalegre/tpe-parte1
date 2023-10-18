@@ -10,4 +10,10 @@
         <input class="form-control form-control-sm" name="anio" type="text" placeholder="Año">
     </div>
     <button type="submit" class="btn btn-secondary">Agregar libro</button>
+    <?php
+    if (isset($error)) : ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $error ?>
+        </div>
+    <?php endif; ?>
 </form>

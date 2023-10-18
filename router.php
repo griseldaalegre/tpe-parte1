@@ -84,7 +84,7 @@ switch ($params[0]) {
         $controller->logOut();
         break;
     default:
-    $controller = new ErrorController();
-    $controller->showError404($error);
+        $controller = new ErrorController();
+        $controller->showError404($error);
         break;
 }

@@ -124,11 +124,12 @@ class CategorieController
 
         if (empty($id_Categorie) || empty($titulo_libro) || empty($autor_libro) || empty($anio)) {
             $controller = new ErrorController();
+            $controller->showErrorNonDataBook('Faltan agregar datos', $this->model, $categorieId);
             
             var_dump($id_Categorie, $titulo_libro, $autor_libro, $anio); 
         } else {
             $this->model->insertBook($id_Categorie, $titulo_libro, $autor_libro, $anio);
-            header('Location: ' . BASE_URL . 'libroByCategoria/' . $id_Categorie);
+            //header('Location: ' . BASE_URL . 'libroByCategoria/' . $id_Categorie);
         }
     }
 
