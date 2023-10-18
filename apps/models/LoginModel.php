@@ -1,17 +1,9 @@
 <?php
 
-require_once './database/config.php';
-
-class LoginModel
+require_once './config.php';
+require_once './apps/models/model.php';
+class LoginModel extends Model
 {
-    private $db;
-
-    public function __construct()
-    {
-        require_once './database/Conection_db.php';
-        $conexionDb = new ConectionDb(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-        $this->db = $conexionDb->getDb();
-    }
 
     public function getLogin($user)
     {

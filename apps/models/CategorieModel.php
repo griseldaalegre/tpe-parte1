@@ -1,18 +1,10 @@
 <?php
 
-require_once './database/config.php';
+require_once './config.php';
+require_once './apps/models/model.php';
 
-class CategoriesModel
+class CategoriesModel extends Model
 {
-    private $db;
-
-    public function __construct()
-    {
-        require_once('./database/Conection_db.php');
-
-        $conexionDb = new ConectionDb(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-        $this->db = $conexionDb->getDb();
-    }
 
     function getCategories()
     {
@@ -30,9 +22,8 @@ class CategoriesModel
     {
         $query = $this->db->prepare('DELETE FROM categorias WHERE id_categoria = ?');
         $query->execute([$idCategorie]);
-        
     }
-    
+
     function insertCategorie($categorie)
     {
         $query = $this->db->prepare('INSERT INTO categorias (categoria) VALUES(?)');
@@ -59,17 +50,9 @@ class CategoriesModel
 }
 
 
-class CategorieModel
+class CategorieModel extends Model
 {
-    private $db;
 
-    public function __construct()
-    {
-        require_once('./database/Conection_db.php');
-
-        $conexionDb = new ConectionDb(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-        $this->db = $conexionDb->getDb();
-    }
 
     function getBooksByCategorie($href)
     {
