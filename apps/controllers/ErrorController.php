@@ -5,13 +5,13 @@ class ErrorController
   public function showErrorInvalidUser($error)
   {
 
-    require_once './templates/Login.phtml';
+    require_once './templates/login.phtml';
   }
 
   public function showErrorNonData($error)
   {
 
-    require_once './templates/Login.phtml';
+    require_once './templates/login.phtml';
   }
   public function showErrorNonDataCat($error, $model)
   {
@@ -22,7 +22,7 @@ class ErrorController
   public function showErrorInsert($error)
   {
 
-    require_once './templates/Login.phtml';
+    require_once './templates/login.phtml';
   }
   public function showErrorDelete($error, $model)
   {
