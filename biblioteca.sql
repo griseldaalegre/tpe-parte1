@@ -37,7 +37,7 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id_categoria`, `categoria`) VALUES
-(1, 'Adventure '),
+(1, 'Adventure'),
 (2, 'Children'),
 (3, 'Drama'),
 (4, 'Fantasy'),
@@ -45,8 +45,7 @@ INSERT INTO `categorias` (`id_categoria`, `categoria`) VALUES
 (6, 'Romance'),
 (7, 'Mystery'),
 (8, 'Humor'),
-(9, 'Fantasy II'),
-(59, 'Terror');
+(9, 'Fantasy');
 
 -- --------------------------------------------------------
 
@@ -70,10 +69,10 @@ INSERT INTO `libros` (`id_libro`, `titulo_libro`, `autor_libro`, `id_categoria`,
 (16, 'poooo', 'asasdada', 1, 2023),
 (17, 'Faith Without A Home', 'Grace Wanderer', 1, 1909),
 (18, 'Moon With Honor', 'Diana Moonshadow', 1, 1991),
-(21, 'Man Of Fantasia', 'Leo Dreamweaver', 2, 1992),
-(22, 'King Of Secrets', 'Maxwell Mystery', 2, 1945),
-(23, 'Wizards Of Wood', 'Merlin Oakheart', 2, 2001),
-(24, 'Lions In My House', 'Leo Lionheart', 2, 1999),
+(21, 'Man Of Fantasia', 'Leo Dreamweaver', 1, 1992),
+(22, 'King Of Secrets', 'Maxwell Mystery', 1, 1945),
+(23, 'Wizards Of Wood', 'Merlin Oakheart', 1, 2001),
+(24, 'Lions In My House', 'Leo Lionheart', 1, 1999),
 (25, 'Chickens And Birds', 'Clara Featherwing', 2, 1969),
 (26, 'Lions And Lions', 'Leo Pride', 2, 1980),
 (27, 'Shield Of Magic', 'Cedric Spellguard', 2, 1975),
@@ -260,17 +259,8 @@ INSERT INTO `libros` (`id_libro`, `titulo_libro`, `autor_libro`, `id_categoria`,
 (216, 'Boys And Visitors', 'Friendly Visitor', 9, 2014),
 (217, 'Moon Of Exploration', 'Luna Explorer', 9, 1999),
 (219, 'Created By Outer Space', 'Outer Space Creator', 9, 1969),
-(220, 'Demand For The Legends', 'Legendary Seeker', 9, 1937),
-(227, 'El cuervo', 'Edgar', 9, 1212),
-(228, 'El cuervo', 'Edgar', 9, 1212),
-(229, 'El cuervo', 'Edgar', 9, 1212),
-(230, 'El cuervo', 'Edgar', 8, 1212),
-(231, 'Hola', 'Edgar', 8, 1999),
-(232, 'El cuervo', 'Edgarcito', 8, 2000),
-(233, 'El cuervito', 'Edgarcito', 8, 5000),
-(236, 'Dumbo', 'Disney', 2, 1900),
-(244, 'El cuervito', 'Edgarcito', 59, 2000),
-(245, 'El cuervito', 'Edgarcito', 59, 2000);
+(220, 'Demand For The Legends', 'Legendary Seeker', 9, 1937);
+
 
 -- --------------------------------------------------------
 
@@ -290,13 +280,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuarios`, `nombre_usuario`, `clave_usuario`, `rol`) VALUES
-(3, 'webadmin', '$2y$10$3LOxgaLuvwoqIOemB6fikue/8Qch4SORrj0GaVfQcqlAIs984298a', 1),
-(4, 'webuser', '$2y$10$Ghf8M42/opvlgR/1sKgqu.XZiF.QKI0CeyiMesshXC4oocFBOPXUS', 0),
-(5, 'Pepito', '$2y$10$FGt1P3oU5SGgF1HVNbzXLeiCvWud70b00CAymjrFAMg5gVieS9nUa', 0),
-(6, 'Pepito', '$2y$10$UKfJqynz6sTTNcyVpXJbAuG6lSh7m.pkwUIpVAQeSXlt4gN2iIY9.', 0),
-(7, 'Pepito', '$2y$10$s6RdopxCnvoG57jSJ6MTK.3rjo7q/lbdmNmq7MdDMH7q7LReH98ka', 0),
-(8, 'Gisele', '$2y$10$wpAzk/62UYWXG5GHAAjb7eYTbUUDotk.CfvBu34RHQISC9W07QfJe', 0),
-(9, 'Pepe', '$2y$10$z6Ppxr/pb.6ux0ycF4qXd.SVLaptPMTuUD6rnWDze8/ttDJIx2f0i', 0);
+(1, 'webadmin', '$2y$10$3LOxgaLuvwoqIOemB6fikue/8Qch4SORrj0GaVfQcqlAIs984298a', 1),
+(2, 'webuser', '$2y$10$Ghf8M42/opvlgR/1sKgqu.XZiF.QKI0CeyiMesshXC4oocFBOPXUS', 0);
 
 --
 -- Índices para tablas volcadas
